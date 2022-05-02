@@ -1,4 +1,18 @@
+<?php
+session_start();
 
+include 'dbconnection.php';
+// checking session is valid for not 
+if (strlen($_SESSION['id'] == 0)) {
+    header('location:logout.php');
+} else {
+
+    $search = isset($_GET['search']) ? $_GET['search'] : '';
+
+    $sql = "SELECT * FROM user WHERE name LIKE '%$search%'";
+    $result = mysqli_query($connect, $sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,8 +31,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>เพิ่มวันตรวจ ATK</title>
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+        <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="assets/css/style-responsive.css" rel="stylesheet">
 </head>
 <body>
+<?php include 'menu.php'; ?>
+        <br>
+        <section id="main-content">
+        <section class="wrapper">
 <form action="add_atk_ok.php" method="POST" enctype="multipart/form-data">
         <div class="container mt-3 mb-3" style="background-color: white; border-radius: 20px;
         border: none; padding: 50px; padding-top: 25px;">
@@ -44,7 +66,7 @@
             <div class="row mt-3 mb-3">
                 <div class="col">
                     <label class="form-label">คณะ</label>
-                    <select name="sex" class="form-select" required="">
+                    <select name="sex" class="form-select" required="" style="font-size: 1.2em;">
                         <option value="" disabled="" selected="">โปรดระบุ</option>
                         <option value="CoC">COC</option>
                         <option value="FHT">FHT</option>
@@ -78,5 +100,8 @@
             
         </div>
     </form>
+    </section>
+        </section>
 </body>
 </html>
+<?php } ?>

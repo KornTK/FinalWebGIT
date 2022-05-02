@@ -114,7 +114,7 @@ return true;
               	  	
                     <li class="mt">
                       <a href="change-password.php">
-                          <i class="fa fa-file"></i>
+                      <i class="fa fa-solid fa-key"></i>
                           <span>เปลี่ยนรหัสผ่าน</span>
                       </a>
                   </li>

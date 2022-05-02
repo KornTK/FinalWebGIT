@@ -9,7 +9,7 @@ if (strlen($_SESSION['id']==0)) {
 
 $search = isset($_GET['search']) ? $_GET['search']:'';
 
-$sql = "SELECT * FROM user WHERE name LIKE '%$search%' ";
+$sql = "SELECT * FROM user WHERE name LIKE '%$search%'";
 $result = mysqli_query($connect, $sql);
 
 ?>
@@ -47,20 +47,27 @@ $result = mysqli_query($connect, $sql);
                                  <?php
                                 if($search != ""){
                                     echo "กําลังแสดงข้อมูลชื่อ :".$search;
+                                    $showmsg = "กําลังแสดงข้อมูลของชื่อ :".$search;
+                                }else{
+                                    $showmsg = "";
                                 }
                                 ?>
                                 <form method="get" id="form" enctype="multipart/form-data" action="" >
                                     <label for="exampleInputEmail1">ระบบค้นหาผู้ใช้</label>
                                     <input type="text" class="form-control" id="search" name="search" placeholder="ป้อนชื่อที่ต้องการหา">
                                     <br>
-                                    <button type="submit" class="btn btn-primary">ค้นหา</button>   
+                                    <button type="submit" class="btn btn-primary">ค้นหา <i class="fa fa-search" aria-hidden="true"></i></button>   
                                     </form>
                                     
                                     <form action="add_user.php">
                                     <button type="submit"  class="btn btn-success"> เพิ่มผู้ใช้งาน</button>
                                 </form>
 	                  	  	  <hr>
-                                
+                                <?php 
+                                if ($showmsg != null){ 
+                                echo '<center> <h2>'.$showmsg.'</h2></center>'; 
+                            }
+                                ?>
                               <thead>
                               <tr>
                                 <th width='10%'>รหัสประจําตัว</th>
@@ -78,10 +85,8 @@ $result = mysqli_query($connect, $sql);
                               </tr>
                               </thead>
                               <tbody>
-                              <?php $ret=mysqli_query($connect,"select * from user");
-							  $cnt=1;
-							  while($row=mysqli_fetch_array($ret))
-							  {?>
+                              <?php 
+							  while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)) {?>
                               <tr>
                                 <td align='right'><?php echo $row["user_id"]; ?></td>
                                 <td><?php echo $row["prefix"]; ?></td>
@@ -100,7 +105,7 @@ $result = mysqli_query($connect, $sql);
                                 </form>
                                   </td>
                               </tr>
-                              <?php $cnt=$cnt+1; }?>
+                              <?php } ?>
                              
                               </tbody>
                           </table>

@@ -12,7 +12,10 @@
             </div>
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="logout.php">ออกจากระบบ</a></li>
+                    <li>
+                        <a class="logout" href="logout.php">ออกจากระบบ <i class="fa fa-sign-out"></i></a>
+                        
+                    </li>
             	</ul>
             </div>
         </header>
@@ -25,7 +28,7 @@
               	  	
                   <li class="mt">
                       <a href="change-password.php">
-                          <i class="fa fa-file"></i>
+                          <i class="fa fa-solid fa-key"></i>
                           <span>เปลี่ยนรหัสผ่าน</span>
                       </a>
                   </li>

@@ -45,19 +45,26 @@ $result = mysqli_query($connect, $sql);
             <?php
             if($search != ""){
                 echo "กําลังแสดงข้อมูลของนักศึกษา :".$search;
+                $showmsg = "กําลังแสดงข้อมูลของรหัสนักศึกษา :".$search;
+            }else{
+                $showmsg = "";
             }
             ?>
             <form method="get" id="form" enctype="multipart/form-data" action="" >
                 <label for="exampleInputEmail1">ระบบค้นหาผลตรวจ จากชื่อนักศึกษา</label>
                 <input type="text" class="form-control" id="search" name="search" placeholder="ป้อนรหัสนักศึกษาที่ต้องการหา">
                 <br>
-                <button type="submit" class="btn btn-primary">ค้นหา</button>
+                <button type="submit" class="btn btn-primary">ค้นหา <i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
 						<form action="add_atk_result.php">
-			<button type="submit" class="btn btn-primary">เพิ่มผลตรวจ ATK</button>
+			<button type="submit" class="btn btn-success">เพิ่มผลตรวจ ATK </button>
 			</form>
             <hr>
-
+            <?php 
+                                if ($showmsg != null){ 
+                                echo '<center> <h2>'.$showmsg.'</h2></center>'; 
+                            }
+                                ?>
             <div class="col-12">
                 <table class="table  table-striped table-hover table-bordered">
                     <tr>
@@ -78,13 +85,13 @@ $result = mysqli_query($connect, $sql);
                             <td>
                                 <form action="del_atk_roud.php" method="post">
                                     <input type="hidden" id="user_id" name="user_id" value="<?php echo $row["user_id"]; ?>">
-                                    <button type="submit" class="btn btn-info"> แก้ไข</button>
+                                    <button type="submit" class="btn btn-info"> แก้ไข <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                 </form>
                             </td>
                             <td>
                                 <form action="del_atk_roud.php" method="post">
                                     <input type="hidden" id="user_id" name="user_id" value="<?php echo $row["user_id"]; ?>">
-                                    <button type="submit" class="btn btn-danger" onClick="return confirm('Do you really want to delete');"> ลบ</button>
+                                    <button type="submit" class="btn btn-danger" onClick="return confirm('Do you really want to delete');"> ลบ <i class="fa fa-times" aria-hidden="true"></i></button>
                                 </form>
                             </td>
                         </tr>

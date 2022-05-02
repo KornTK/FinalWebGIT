@@ -45,19 +45,26 @@ $result = mysqli_query($connect, $sql);
                                 <?php
                                 if($search != ""){
                                     echo "กําลังแสดงข้อมูลของคถะ :".$search;
+                                    $showmsg = "กําลังแสดงข้อมูลของคณะ :".$search;
+                                }else{
+                                    $showmsg = "";
                                 }
                                 ?>
                                 <form method="get" id="form" enctype="multipart/form-data" action="" >
                                     <label for="exampleInputEmail1">ระบบค้นหารอบเปิดจอง จากชื่อคณะ</label>
-                                    <input type="text" class="form-control" id="search" name="search" placeholder="ป้อนชื่อที่ต้องการหา">
+                                    <input type="text" class="form-control" id="search" name="search" placeholder="ป้อนชื่อคณะที่ต้องการหา">
                                     <br>
-                                    <button type="submit" class="btn btn-primary">ค้นหา</button>
+                                    <button type="submit" class="btn btn-primary">ค้นหา <i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
 			<form action="add_atk_roud.php">
-			<button type="submit" class="btn btn-primary">เพิ่มรอบตรวจ ATK</button>
+			<button type="submit" class="btn btn-success">เพิ่มรอบตรวจ ATK</button>
 			</form>
             <hr>
-
+            <?php 
+                                if ($showmsg != null){ 
+                                echo '<center> <h2>'.$showmsg.'</h2></center>'; 
+                            }
+                                ?>
             <div class="col-12">
                 <thead>
                     <tr>
