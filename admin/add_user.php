@@ -44,12 +44,11 @@ if (strlen($_SESSION['id'] == 0)) {
         <br>
         <section id="main-content">
         <section class="wrapper">
-            <form action="add_ok.php" method="POST" enctype="multipart/form-data">
+            <form action="add_user_ok.php" method="POST" enctype="multipart/form-data">
                 <div class="container mb-3" style="background-color: white; border-radius: 20px;
         border: none; padding: 50px; padding-top: 25px;">
                     <center>
                         <h1>เพิ่มผู้ใช้งาน</h1>
-                        <p>Please input your things</p>
                         <p>กรุณากรอกข้อมูลให้ครบทุกช่อง</p>
                     </center>
 
@@ -69,7 +68,7 @@ if (strlen($_SESSION['id'] == 0)) {
                         </div>
                         <div class="col">
                             <label class="form-label">นามสกุล</label>
-                            <input type="text" name="sname" class="form-control" value="" required="">
+                            <input type="text" name="lname" class="form-control" value="" required="">
                         </div>
                     </div>
                     <div class="row mt-3 mb-3">
@@ -83,15 +82,25 @@ if (strlen($_SESSION['id'] == 0)) {
                         </div>
                         <div class="col">
                             <label class="form-label">รหัสนักศึกษา</label>
-                            <input type="text" name="stdid" class="form-control" required="">
+                            <input type="number" name="user_id" class="form-control" required="">
                         </div>
                         <div class="col">
                             <label class="form-label">เบอร์โทรศัพท์</label>
-                            <input type="text" name="phonenum" class="form-control" required="">
+                            <input type="number" name="phone" class="form-control" required="">
 
                         </div>
                     </div>
                     <div class="row mt-3 mb-3">
+                    <div class="col">
+                            <label class="form-label">อีเมล์</label>
+                            <input type="email" name="email" class="form-control" required="">
+
+                        </div>
+                        <div class="col">
+                            <label class="form-label">รหัสผ่าน</label>
+                            <input type="text" name="password" class="form-control" required="">
+
+                        </div>
                         <div class="col">
                             <label class="form-label">Faculty</label>
                             <select name="faculty" class="form-select" required="" style="font-size: 1.2em;">

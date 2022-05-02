@@ -95,7 +95,6 @@ if (strlen($_SESSION['id'] == 0)) {
                     <th>เบอร์ติดต่อ</th>
                     <th>คณะ</th>
                     <th>ชื่อไฟล์รูป</th>
-                    <th>ไอดีการฉีดวัคซีน</th>
                     <th>ลบ</th>
 
                   </tr>
@@ -113,7 +112,6 @@ if (strlen($_SESSION['id'] == 0)) {
                       <td><?php echo $row["phone"]; ?></td>
                       <td><?php echo $row["faculty"]; ?></td>
                       <td><?php echo $row["img"]; ?></td>
-                      <td><?php echo $row["VL_ID"]; ?></td>
                       <td>
                         <!-- <form action="del_user.php" method="post">
                                     <input type="hidden" id="user_id" name="user_id" value="<?php echo $row["user_id"]; ?>">
