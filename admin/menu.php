@@ -13,7 +13,7 @@
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
                     <li>
-                        <a class="logout" href="logout.php">ออกจากระบบ <i class="fa fa-sign-out"></i></a>
+                        <a class="logout" href="logout.php" style="background: #ffffffab;color: #424a5d;border: 2px solid #424a5d !important;">ออกจากระบบ <i class="fa fa-sign-out"></i></a>
                         
                     </li>
             	</ul>
