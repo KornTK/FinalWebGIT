@@ -53,15 +53,17 @@ $result = mysqli_query($connect, $sql);
                                 }
                                 ?>
                                 <form method="get" id="form" enctype="multipart/form-data" action="" >
-                                    <label for="exampleInputEmail1">ระบบค้นหาผู้ใช้</label>
+                                    <label for="exampleInputEmail1"> ระบบค้นหาผู้ใช้</label>
                                     <input type="text" class="form-control" id="search" name="search" placeholder="ป้อนชื่อที่ต้องการหา">
+                                    
                                     <br>
-                                    <button type="submit" class="btn btn-primary">ค้นหา <i class="fa fa-search" aria-hidden="true"></i></button>   
+                                    
+                                    <button type="submit" class="btn btn-primary" style="margin-left: 1em;">ค้นหา <i class="fa fa-search" aria-hidden="true"></i></button>   
                                     </form>
                                     
                                     <form action="add_user.php">
-                                    <button type="submit"  class="btn btn-success"> เพิ่มผู้ใช้งาน</button>
-                                </form>
+                                    <button type="submit"  class="btn btn-success"  style="margin-left: 1em;"> เพิ่มผู้ใช้งาน</button>
+                                    </form>
 	                  	  	  <hr>
                                 <?php 
                                 if ($showmsg != null){ 

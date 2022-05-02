@@ -54,10 +54,10 @@ $result = mysqli_query($connect, $sql);
                                     <label for="exampleInputEmail1">ระบบค้นหารอบเปิดจอง จากชื่อคณะ</label>
                                     <input type="text" class="form-control" id="search" name="search" placeholder="ป้อนชื่อคณะที่ต้องการหา">
                                     <br>
-                                    <button type="submit" class="btn btn-primary">ค้นหา <i class="fa fa-search" aria-hidden="true"></i></button>
+                                    <button type="submit" class="btn btn-primary" style="margin-left: 1em;">ค้นหา <i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
 			<form action="add_atk_roud.php">
-			<button type="submit" class="btn btn-success">เพิ่มรอบตรวจ ATK</button>
+			<button type="submit" class="btn btn-success" style="margin-left: 1em;">เพิ่มรอบตรวจ ATK</button>
 			</form>
             <hr>
             <?php 

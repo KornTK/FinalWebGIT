@@ -54,10 +54,10 @@ $result = mysqli_query($connect, $sql);
                 <label for="exampleInputEmail1">ระบบค้นหาผลตรวจ จากชื่อนักศึกษา</label>
                 <input type="text" class="form-control" id="search" name="search" placeholder="ป้อนรหัสนักศึกษาที่ต้องการหา">
                 <br>
-                <button type="submit" class="btn btn-primary">ค้นหา <i class="fa fa-search" aria-hidden="true"></i></button>
+                <button type="submit" class="btn btn-primary" style="margin-left: 1em;">ค้นหา <i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
 						<form action="add_atk_result.php">
-			<button type="submit" class="btn btn-success">เพิ่มผลตรวจ ATK </button>
+			<button type="submit" class="btn btn-success" style="margin-left: 1em;">เพิ่มผลตรวจ ATK </button>
 			</form>
             <hr>
             <?php 
