@@ -6,8 +6,17 @@ if (strlen($_SESSION['id'] == 0)) {
     header('location:logout.php');
 } else {
 
-
     $user_id = $_POST['user_id'];
+
+    $extension = pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
+
+    //form , to 
+    move_uploaded_file($_FILES["file"]["tmp_name"], "../pic/user/" . $user_id . "." . $extension);
+
+
+
+
+
     $prefix = $_POST['prefix'];
     $name = $_POST['name'];
     $lname = $_POST['lname'];
@@ -16,7 +25,7 @@ if (strlen($_SESSION['id'] == 0)) {
     $sex = $_POST['sex'];
     $phone = $_POST['phone'];
     $faculty = $_POST['faculty'];
-    $namefile = $user_id .".jpg";
+    $namefile = $user_id .".". $extension;
 
     $query = "INSERT INTO `user` (`user_id`, `prefix`, `name`, `lname`, `Email`, `password`, `sex`, `phone`, `faculty`, `img`) VALUES (
         '$user_id','$prefix', '$name', '$lname', '$email', '$password', '$sex', '$phone',
@@ -57,8 +66,8 @@ if (strlen($_SESSION['id'] == 0)) {
         <link href="assets/css/style-responsive.css" rel="stylesheet">
 
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
     </head>
 
     <body>
@@ -77,18 +86,18 @@ if (strlen($_SESSION['id'] == 0)) {
             </section>
         </section>
         <script type="text/javascript">
-    $(document).ready(function() {
-        swal({
-  title: "เพิ่มผู้ใช้งานเรียบร้อยแล้ว!",
-  text: "ระบบจะพาท่านกลับไปหน้าแสดงผู้ใช้งานทั้งหมดในอีก 3 วินาที.",
-  type: "success",
-  timer: 3000,
-  showConfirmButton: false
-}, function(){
-      window.location.href = "manage-users.php";
-});
-    });
-</script>
+            $(document).ready(function() {
+                swal({
+                    title: "เพิ่มผู้ใช้งานเรียบร้อยแล้ว!",
+                    text: "ระบบจะพาท่านกลับไปหน้าแสดงผู้ใช้งานทั้งหมดในอีก 3 วินาที.",
+                    type: "success",
+                    timer: 3000,
+                    showConfirmButton: false
+                }, function() {
+                    window.location.href = "manage-users.php";
+                });
+            });
+        </script>
     </body>
 
     </html>

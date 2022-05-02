@@ -205,7 +205,7 @@ if (strlen($_SESSION['id'] == 0)) {
                     <div class="row mt-3 mb-3">
                         <div class="col">
                             <label for="formFile" class="form-label">รูปโปรไฟล์</label>
-                            <input class="form-control" type="file" name="picfile">
+                            <input class="form-control" type="file" name="file">
                             <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                         </div>
                     </div>

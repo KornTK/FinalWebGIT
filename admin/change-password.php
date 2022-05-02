@@ -157,7 +157,7 @@ return true;
 	                  
                   <div class="col-md-12">
                       <div class="content-panel">
-                           <form class="form-horizontal style-form" name="form1" method="post" action="" onSubmit="return valid();">
+                           <form class="form-horizontal style-form" name="form1" method="post" action="" onSubmit="return valid();" style="margin: 1em;">
                            <p style="color:#F00"><?php echo $_SESSION['msg'];?><?php echo $_SESSION['msg']="";?></p>
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">กรอกรหัสผ่านเก่า</label>

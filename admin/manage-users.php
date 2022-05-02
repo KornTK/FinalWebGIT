@@ -95,6 +95,7 @@ if (strlen($_SESSION['id'] == 0)) {
                     <th>เบอร์ติดต่อ</th>
                     <th>คณะ</th>
                     <th>ชื่อไฟล์รูป</th>
+                    <th>แก้ไข</th>
                     <th>ลบ</th>
 
                   </tr>
@@ -111,12 +112,18 @@ if (strlen($_SESSION['id'] == 0)) {
                       <td><?php echo $row["sex"]; ?></td>
                       <td><?php echo $row["phone"]; ?></td>
                       <td><?php echo $row["faculty"]; ?></td>
-                      <td><?php echo $row["img"]; ?></td>
+                      <td><?php 
+                      echo '<img src="../pic/user/'.$row['img'].'" width="60px" style="border-radius: 10%"/>';
+                      echo $row["img"]; 
+                      ?></td>
                       <td>
-                        <!-- <form action="del_user.php" method="post">
-                                    <input type="hidden" id="user_id" name="user_id" value="<?php echo $row["user_id"]; ?>">
-                                    <button type="submit" class="btn btn-danger" onClick="return confirm('Do you really want to delete');"> ลบ</button>
-                                </form> -->
+                                                    <form action="edit_user.php" method="post">
+                                                        <input type="hidden" id="user_id" name="user_id" value="<?php echo $row["user_id"]; ?>">
+                                                        <button type="submit" class="btn btn-info"> แก้ไข <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                    </form>
+                                                </td>
+
+                      <td>
                         <div>
                           <a data-id="<?php echo $row["user_id"]; ?>" href="?delete=<?php echo $row["user_id"]; ?>" class="btn btn-danger delete-btn"> ลบ <i class="fa fa-times" aria-hidden="true"></i></a>
                         </div>

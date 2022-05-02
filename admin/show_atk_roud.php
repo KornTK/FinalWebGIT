@@ -99,7 +99,7 @@ if (strlen($_SESSION['id'] == 0)) {
                                         </tr>
                                         <?php while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
                                             <tr>
-                                                <td align='right'><?php echo $row["atopen_id"]; ?></td>
+                                                <td align='center'><?php echo $row["atopen_id"]; ?></td>
                                                 <td><?php echo $row["date"]; ?></td>
                                                 <td><?php echo $row["time"]; ?></td>
                                                 <td><?php echo $row["location"]; ?></td>
