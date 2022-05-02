@@ -1,6 +1,6 @@
 
 <?php
- $connect = mysqli_connect("localhost", "root","", "project_atk");
+include'dbconnection.php';
   
  $user_id = $_POST['user_id'];
  

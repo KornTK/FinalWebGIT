@@ -112,7 +112,7 @@ return true;
               	  <p class="centered"><a href="#"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
               	  <h5 class="centered"><?php echo $_SESSION['login'];?></h5>
               	  	
-                  <li class="mt">
+                    <li class="mt">
                       <a href="change-password.php">
                           <i class="fa fa-file"></i>
                           <span>เปลี่ยนรหัสผ่าน</span>
@@ -128,21 +128,21 @@ return true;
 
                   <li class="sub-menu">
                       <a href="report.php" >
-                          <i class=""></i>
+                      <i class="fa fa-solid fa-flag"></i>
                           <span>รายงาน</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
                       <a href="show_atk_roud.php" >
-                          <i class=""></i>
+                      <i class="fa fa-regular fa-calendar"></i>
                           <span>จัดการวันตรวจ ATK</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
                       <a href="show_atk_result.php" >
-                          <i class=""></i>
+                      <i class="fa fa-solid fa-check"></i>
                           <span>ผลตรวจ ATK</span>
                       </a>
                   </li>
