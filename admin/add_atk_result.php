@@ -7,11 +7,6 @@ if (strlen($_SESSION['id'] == 0)) {
     header('location:logout.php');
 } else {
 
-    $search = isset($_GET['search']) ? $_GET['search'] : '';
-
-    $sql = "SELECT * FROM user WHERE name LIKE '%$search%'";
-    $result = mysqli_query($connect, $sql);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,30 +38,27 @@ if (strlen($_SESSION['id'] == 0)) {
             <div class="row mt-3 mb-3">
                 <div class="col">
                     <label class="form-label">วันที่</label>
-                    <input type="date" name="name" class="form-control"  required="">
+                    <input type="date" name="date" class="form-control"  required="">
                 </div>
                 <div class="col">
                     <label class="form-label">รหัสนักศึกษา</label>
-                    <input type="text" name="name" class="form-control" required="">
+                    <input type="text" name="stuid" class="form-control" required="">
                 </div>
                 <div class="col">
                     <label class="form-label">รหัสรอบที่เปิด</label>
-                    <input type="text" name="sname" class="form-control"  required="">
+                    <input type="text" name="openid" class="form-control"  required="">
                 </div>
             </div>
             <div class="row mt-3 mb-3">
                 <div class="col">
                     <label class="form-label">ผลตรวจ</label>
-                    <select name="sex" class="form-select" required=""  style="font-size: 1.2em;">
+                    <select name="resu" class="form-select" required=""  style="font-size: 1.2em;">
                         <option value="" disabled="" selected="">โปรดระบุ</option>
                         <option value="1">ติดเชื้อ (2ขีด)</option>
                         <option value="0">ไม่ติดเชื้อ (1ขีด)</option>
                     </select>
                 </div>
-                <div class="col">
-                    <label class="form-label">ยี่ห้อชุดตรวจ</label>
-                    <input type="text" name="stdid" class="form-control" required="">
-                </div>
+
             </div>
            
             <div class="row mt-3 mb-3">
