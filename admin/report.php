@@ -90,7 +90,6 @@ if (strlen($_SESSION['id'] == 0)) {
             </table>
             <center>
               <br>
-              <a href="manage-users.php" class="btn btn-info" role="button">กลับหน้าแอดมิน</a>
               <button class="btn btn-success" onClick="window.print()">ปริ้นรายงานหน้านี้</button>
             </center>
           </div>

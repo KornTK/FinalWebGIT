@@ -73,7 +73,7 @@ if (strlen($_SESSION['id'] == 0)) {
                 <div class="col">
                     <center>
                         <br>
-                        <a href="manage-users.php" class="btn btn-info" role="button">กลับหน้าแอดมิน</a>
+                        <a href="show_atk_result.php" class="btn btn-info" role="button">กลับหน้าแสดงผลตรวจ ATK</a>
                         <button type="submit" class="btn btn-success">บันทึกผลตรวจ ATK</button>
                     </center>
                 </div>
