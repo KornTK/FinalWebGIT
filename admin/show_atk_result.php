@@ -96,8 +96,8 @@ if (strlen($_SESSION['id'] == 0)) {
                                                 <td><?php echo $row["result"]; ?></td>
 
                                                 <td>
-                                                    <form action="del_atk_roud.php" method="post">
-                                                        <input type="hidden" id="user_id" name="user_id" value="<?php echo $row["user_id"]; ?>">
+                                                    <form action="edit_atk_result.php" method="post">
+                                                        <input type="hidden" id="AT_ID" name="AT_ID" value="<?php echo $row["AT_ID"]; ?>">
                                                         <button type="submit" class="btn btn-info"> แก้ไข <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                     </form>
                                                 </td>

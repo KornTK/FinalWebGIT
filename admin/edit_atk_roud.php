@@ -64,7 +64,7 @@ if (strlen($_SESSION['id'] == 0)) {
                             <div class="col">
                                 <label class="form-label">คณะ</label>
                                 <select name="fac" class="form-select" required="" style="font-size: 1.2em;" >
-                                    <option value="<?php echo $row["faculty"]; ?>" selected=""><?php echo $row["faculty"]; ?></option>
+                                    <option value="<?php echo $row["faculty"]; ?>" selected="">ค่าเดิม :<?php echo $row["faculty"]; ?></option>
                                     <option value="CoC">COC</option>
                                     <option value="FHT">FHT</option>
                                     <option value="FHT">FIS</option>
