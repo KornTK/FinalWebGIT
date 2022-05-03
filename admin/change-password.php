@@ -131,6 +131,13 @@ if (strlen($_SESSION['id'] == 0)) {
                             </a>
                         </li>
 
+                        <li class="sub-menu">
+                    <a href="show_book_atk.php">
+                    <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                        <span> จองตรวจ ATK</span>
+                    </a>
+                </li>
+
                     </ul>
                 </div>
             </aside>
