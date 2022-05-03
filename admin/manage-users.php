@@ -11,13 +11,13 @@ if (strlen($_SESSION['id'] == 0)) {
     $delete_id = $_GET['delete'];
     $deletestmt = $conn->query("DELETE FROM user WHERE user_id = $delete_id");
     $deletestmt->execute();
-    
+
     if ($deletestmt) {
-        echo "<script>alert('Data has been deleted successfully');</script>";
-        $_SESSION['success'] = "Data has been deleted succesfully";
-        header("refresh:1; url=manage-users.php");
+      echo "<script>alert('Data has been deleted successfully');</script>";
+      $_SESSION['success'] = "Data has been deleted succesfully";
+      header("refresh:1; url=manage-users.php");
     }
-}
+  }
 
 
   $search = isset($_GET['search']) ? $_GET['search'] : '';
@@ -81,7 +81,12 @@ if (strlen($_SESSION['id'] == 0)) {
                 <hr>
                 <?php
                 if ($showmsg != null) {
-                  echo '<center> <h2>' . $showmsg . '</h2></center>';
+                  echo '<center> <h2>' . $showmsg . '</h2> </center>';
+                  echo "<center>
+                  <a href='manage-users.php' class='btn btn-primary'>แสดงทั้งหมด</a>
+
+                  <br> <br>
+                  </center>";
                 }
                 ?>
                 <thead>
@@ -112,16 +117,16 @@ if (strlen($_SESSION['id'] == 0)) {
                       <td><?php echo $row["sex"]; ?></td>
                       <td><?php echo $row["phone"]; ?></td>
                       <td><?php echo $row["faculty"]; ?></td>
-                      <td><?php 
-                      echo '<img src="../pic/user/'.$row['img'].'" width="60px" style="border-radius: 10%"/>';
-                      echo $row["img"]; 
-                      ?></td>
+                      <td><?php
+                          echo '<img src="../pic/user/' . $row['img'] . '" width="60px" style="border-radius: 10%"/>';
+                          echo $row["img"];
+                          ?></td>
                       <td>
-                                                    <form action="edit_user.php" method="post">
-                                                        <input type="hidden" id="user_id" name="user_id" value="<?php echo $row["user_id"]; ?>">
-                                                        <button type="submit" class="btn btn-info"> แก้ไข <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                    </form>
-                                                </td>
+                        <form action="edit_user.php" method="post">
+                          <input type="hidden" id="user_id" name="user_id" value="<?php echo $row["user_id"]; ?>">
+                          <button type="submit" class="btn btn-info"> แก้ไข <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                        </form>
+                      </td>
 
                       <td>
                         <div>
@@ -151,52 +156,51 @@ if (strlen($_SESSION['id'] == 0)) {
         $('select.styled').customSelect();
       });
     </script>
-     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-                <script>
+    <script>
+      //เข้าถึง class 
+      $(".delete-btn").click(function(e) {
+        var userId = $(this).data('id');
+        e.preventDefault();
+        deleteConfirm(userId);
+      })
 
-        //เข้าถึง class 
-        $(".delete-btn").click(function(e) {
-            var userId = $(this).data('id');
-            e.preventDefault();
-            deleteConfirm(userId);
-        })
-
-        function deleteConfirm(userId) {
-            Swal.fire({
-                title: 'คุณต้องการจะลบใช่หรือไม่?',
-                icon: 'warning',
-                text: "หากลบแล้ว จะไม่สามารถกู้คืนได้!",
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'ลบ',
-                showLoaderOnConfirm: true,
-                preConfirm: function() {
-                    return new Promise(function(resolve) {
-                        $.ajax({
-                                url: 'manage-users.php',
-                                type: 'GET',
-                                data: 'delete=' + userId,
-                            })
-                            .done(function() {
-                                Swal.fire({
-                                    title: 'success',
-                                    text: 'ลบเรียบร้อยแล้ว!',
-                                    icon: 'success',
-                                }).then(() => {
-                                    document.location.href = 'manage-users.php';
-                                })
-                            })
-                            .fail(function() {
-                                Swal.fire('Oops...', 'มีบางอย่างผิดพลาดกับระบบหลังบ้าน ajax !', 'error')
-                                window.location.reload();
-                            });
-                    });
-                },
+      function deleteConfirm(userId) {
+        Swal.fire({
+          title: 'คุณต้องการจะลบใช่หรือไม่?',
+          icon: 'warning',
+          text: "หากลบแล้ว จะไม่สามารถกู้คืนได้!",
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'ลบ',
+          showLoaderOnConfirm: true,
+          preConfirm: function() {
+            return new Promise(function(resolve) {
+              $.ajax({
+                  url: 'manage-users.php',
+                  type: 'GET',
+                  data: 'delete=' + userId,
+                })
+                .done(function() {
+                  Swal.fire({
+                    title: 'success',
+                    text: 'ลบเรียบร้อยแล้ว!',
+                    icon: 'success',
+                  }).then(() => {
+                    document.location.href = 'manage-users.php';
+                  })
+                })
+                .fail(function() {
+                  Swal.fire('Oops...', 'มีบางอย่างผิดพลาดกับระบบหลังบ้าน ajax !', 'error')
+                  window.location.reload();
+                });
             });
-        }
+          },
+        });
+      }
     </script>
 
   </body>

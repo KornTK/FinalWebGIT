@@ -82,6 +82,11 @@ if (strlen($_SESSION['id'] == 0)) {
                                 <?php
                                 if ($showmsg != null) {
                                     echo '<center> <h2>' . $showmsg . '</h2></center>';
+                                    echo "<center>
+                  <a href='show_atk_roud.php' class='btn btn-primary'>แสดงทั้งหมด</a>
+
+                  <br> <br>
+                  </center>";
                                 }
                                 ?>
                                 <div class="col-12">
