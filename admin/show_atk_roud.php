@@ -107,8 +107,8 @@ if (strlen($_SESSION['id'] == 0)) {
                                                 <td><?php echo $row["brand"]; ?></td>
                                                 <td><?php echo $row["amount"]; ?></td>
                                                 <td>
-                                                    <form action="del_atk_roud.php" method="post">
-                                                        <input type="hidden" id="user_id" name="user_id" value="">
+                                                    <form action="edit_atk_roud.php" method="post">
+                                                        <input type="hidden" id="atopen_id" name="atopen_id" value="<?php echo $row["atopen_id"]; ?>">
                                                         <button type="submit" class="btn btn-info"> แก้ไข <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                     </form>
                                                 </td>

@@ -46,13 +46,13 @@ if (strlen($_SESSION['id'] == 0)) {
         <?php include 'menu.php'; ?>
         <section id="main-content">
             <section class="wrapper">
-                <h3><i class="fa fa-angle-right"></i> จัดการวันตรวจ ATK</h3>
+                <h3><i class="fa fa-angle-right"></i> จัดการผลตรวจ ATK</h3>
                 <div class="row">
 
                     <div class="col-md-12">
                         <div class="content-panel">
                             <table class="table table-striped table-advance table-hover">
-                                <h4><i class="fa fa-angle-right"></i> รายละเอียดวันตรวจทั้งหมด </h4>
+                                <h4><i class="fa fa-angle-right"></i> รายละเอียดผลตรวจทั้งหมด </h4>
 
                                 <br>
                                 <?php
