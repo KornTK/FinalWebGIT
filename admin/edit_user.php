@@ -42,7 +42,7 @@ if (strlen($_SESSION['id'] == 0)) {
                 <div class="container mt-3 mb-3" style="background-color: white; border-radius: 20px;
         border: none; padding: 50px; padding-top: 25px;">
                     <center>
-                        <h1>อัพเดตประวัติ</h1>
+                        <h1>อัพเดตประวัติ <br> คุณ : <?php echo $row["name"]; ?> <?php echo $row["lname"]; ?></h1>
                         <p>Please input your things</p>
                         <p>กรุณากรอกข้อมูลประวัติในระบบ</p>
 
