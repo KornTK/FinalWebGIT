@@ -101,8 +101,8 @@ if (strlen($_SESSION['id'] == 0)) {
 
                                     </div>
                                     <div class="col-sm-2">
-                                        <form action="add_atk_booking.php">
-                                            <button type="submit" class="btn btn-success" style="margin-left: 1em;">เพิ่มรอบตรวจ ATK</button>
+                                        <form action="add_book_atk.php">
+                                            <button type="submit" class="btn btn-success" style="margin-left: 1em;">เพิ่มการจองตรวจ ATK</button>
                                         </form>
                                     </div>
 
