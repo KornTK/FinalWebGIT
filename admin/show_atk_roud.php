@@ -142,6 +142,7 @@ if (strlen($_SESSION['id'] == 0)) {
         function deleteConfirm(userId) {
             Swal.fire({
                 title: 'คุณต้องการจะลบใช่หรือไม่?',
+                icon: 'warning',
                 text: "หากลบแล้ว จะไม่สามารถกู้คืนได้!",
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

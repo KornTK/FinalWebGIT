@@ -77,7 +77,7 @@ if (strlen($_SESSION['id'] == 0)) {
                             </div>
                             <div class="col">
                                 <label class="form-label">จํานวนคนที่รับ</label>
-                                <input type="text" name="howmany" class="form-control" required="" value="<?php echo $row["amount"]; ?>">
+                                <input type="number" name="howmany" class="form-control" required="" value="<?php echo $row["amount"]; ?>">
 
                             </div>
                         </div>

@@ -44,8 +44,11 @@ if (strlen($_SESSION['id'] == 0)) {
         <link href="assets/css/style-responsive.css" rel="stylesheet">
 
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
     </head>
 
     <body>
@@ -64,16 +67,30 @@ if (strlen($_SESSION['id'] == 0)) {
             </section>
         </section>
         <script type="text/javascript">
+            let timerInterval
     $(document).ready(function() {
-        swal({
-  title: "อัพเดทข้อมูลรอบจอง ATK เรียบร้อยแล้ว!",
-  text: "ระบบจะพาไปหน้าแสดงรอบทั้งหมดในอีก 3 วินาที.",
-  type: "success",
+        Swal.fire({
+  title: 'อัพเดทข้อมูลรอบจอง ATK เรียบร้อยแล้ว!',
+  icon: 'success',
+  html: 'ระบบจะพาไปหน้าแสดงรอบทั้งหมดในอีก <b></b> มิลิวินาที.',
   timer: 3000,
-  showConfirmButton: false
-}, function(){
-      window.location.href = "show_atk_roud.php";
-});
+  timerProgressBar: true,
+  didOpen: () => {
+    Swal.showLoading()
+    const b = Swal.getHtmlContainer().querySelector('b')
+    timerInterval = setInterval(() => {
+      b.textContent = Swal.getTimerLeft()
+    }, 10)
+  },
+  willClose: () => {
+    clearInterval(timerInterval)
+  }
+}).then((result) => {
+  /* if timer is end */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer')
+    window.location.href = "show_atk_roud.php";
+  }});
     });
 </script>
     </body>
