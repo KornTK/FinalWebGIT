@@ -9,9 +9,9 @@ $result = mysqli_query($connect, $sql);
 
 
 if ($result) {
-  header('Location: manage-users.php');
+    header('Location: manage-users.php');
 } else {
-  //
+    //
 }
 
 ?>

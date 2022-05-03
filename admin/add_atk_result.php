@@ -2,12 +2,11 @@
 session_start();
 
 include 'dbconnection.php';
-// checking session is valid for not 
+// checking session is valid for not
 if (strlen($_SESSION['id'] == 0)) {
     header('location:logout.php');
 } else {
-
-?>
+    ?>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -82,4 +81,5 @@ if (strlen($_SESSION['id'] == 0)) {
     </body>
 
     </html>
-<?php } ?>
+<?php
+} ?>

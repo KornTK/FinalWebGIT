@@ -1,4 +1,4 @@
-<? ob_start(); ?>
+<?php ob_start(); ?>
 <?php
 session_start();
 /* Load factory class */
@@ -9,7 +9,7 @@ session_destroy();
 if (!isset($_SESSION['email'])) {
     header('Location:' . $main->siteurl . 'index.php');
     exit;
-    //echo 'logout';
+//echo 'logout';
 } else {
     echo 'logout ไม่สำเร็จ';
 }

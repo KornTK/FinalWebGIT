@@ -1,15 +1,12 @@
 <?php
 session_start();
 include 'dbconnection.php';
-// checking session is valid for not 
+// checking session is valid for not
 if (strlen($_SESSION['email'] == null)) {
     header('location:logout.php');
 } else {
-
-   
     $email = $_SESSION['email'];
     if (isset($_POST['updatebio'])) {
-
         $prefix = $_POST['prefix'];
         $name = $_POST['name'];
         $lname = $_POST['lname'];
@@ -24,7 +21,6 @@ if (strlen($_SESSION['email'] == null)) {
         $update = mysqli_query($connect, $query);
     }
     if (isset($_POST['updatevac'])) {
-
         $vacnum = $_POST['vacnum'];
         $vac1 = $_POST['vac1'];
         $vac2 = $_POST['vac2'];
@@ -39,8 +35,7 @@ if (strlen($_SESSION['email'] == null)) {
         vac2='$vac2',vac3='$vac3',vac4='$vac4',vac5='$vac5',vac6='$vac6',vac7='$vac7',vac8='$vac8' WHERE Email='$email'";
 
         $updatevac = mysqli_query($connect, $queryvac);
-    }
-?>
+    } ?>
 
     <!DOCTYPE html>
     <html lang="en">

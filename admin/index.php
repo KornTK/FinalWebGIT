@@ -3,22 +3,22 @@ session_start();
 error_reporting(0);
 include("dbconnection.php");
 if (isset($_POST['login'])) {
-  $adminusername = $_POST['username'];
-  $pass = md5($_POST['password']);
-  $ret = mysqli_query($con, "SELECT * FROM admin WHERE username='$adminusername' and password='$pass'");
-  $num = mysqli_fetch_array($ret);
-  if ($num > 0) {
-    $extra = "manage-users.php";
-    $_SESSION['login'] = $_POST['username'];
-    $_SESSION['id'] = $num['id'];
-    echo "<script>window.location.href='" . $extra . "'</script>";
-    exit();
-  } else {
-    $_SESSION['action1'] = "*Invalid username or password";
-    $extra = "index.php";
-    echo "<script>window.location.href='" . $extra . "'</script>";
-    exit();
-  }
+    $adminusername = $_POST['username'];
+    $pass = md5($_POST['password']);
+    $ret = mysqli_query($con, "SELECT * FROM admin WHERE username='$adminusername' and password='$pass'");
+    $num = mysqli_fetch_array($ret);
+    if ($num > 0) {
+        $extra = "manage-users.php";
+        $_SESSION['login'] = $_POST['username'];
+        $_SESSION['id'] = $num['id'];
+        echo "<script>window.location.href='" . $extra . "'</script>";
+        exit();
+    } else {
+        $_SESSION['action1'] = "*Invalid username or password";
+        $extra = "index.php";
+        echo "<script>window.location.href='" . $extra . "'</script>";
+        exit();
+    }
 }
 
 ?>

@@ -6,7 +6,7 @@ if (strlen($_SESSION['id'] == 0)) {
     header('location:logout.php');
 } else {
 
-    // for updating user info    
+    // for updating user info
     if (isset($_POST['Submit'])) {
         $fname = $_POST['fname'];
         $lname = $_POST['lname'];
@@ -14,8 +14,7 @@ if (strlen($_SESSION['id'] == 0)) {
         $uid = intval($_GET['uid']);
         $query = mysqli_query($con, "update users set fname='$fname' ,lname='$lname' , contactno='$contact' where id='$uid'");
         $_SESSION['msg'] = "Profile Updated successfully";
-    }
-?>
+    } ?>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -81,7 +80,7 @@ if (strlen($_SESSION['id'] == 0)) {
                 </div>
             </aside>
             <?php $ret = mysqli_query($con, "select * from users where id='" . $_GET['uid'] . "'");
-            while ($row = mysqli_fetch_array($ret)) { ?>
+    while ($row = mysqli_fetch_array($ret)) { ?>
                 <section id="main-content">
                     <section class="wrapper">
                         <h3><i class="fa fa-angle-right"></i> <?php echo $row['fname']; ?>'s Information</h3>
@@ -153,4 +152,5 @@ if (strlen($_SESSION['id'] == 0)) {
     </body>
 
     </html>
-<?php } ?>
+<?php
+} ?>

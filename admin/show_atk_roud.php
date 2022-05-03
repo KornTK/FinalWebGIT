@@ -2,12 +2,10 @@
 session_start();
 
 include 'dbconnection.php';
-// checking session is valid for not 
+// checking session is valid for not
 if (strlen($_SESSION['id'] == 0)) {
     header('location:logout.php');
 } else {
-
-
     if (isset($_GET['delete'])) {
         $delete_id = $_GET['delete'];
         $deletestmt = $conn->query("DELETE FROM atk_open WHERE atopen_id = $delete_id");
@@ -24,9 +22,7 @@ if (strlen($_SESSION['id'] == 0)) {
     $search = isset($_GET['search']) ? $_GET['search'] : '';
 
     $sql = "SELECT * FROM atk_open WHERE faculty LIKE '%$search%'";
-    $result = mysqli_query($connect, $sql);
-
-?>
+    $result = mysqli_query($connect, $sql); ?>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -67,8 +63,7 @@ if (strlen($_SESSION['id'] == 0)) {
                                     $showmsg = "กําลังแสดงข้อมูลของคณะ :" . $search;
                                 } else {
                                     $showmsg = "";
-                                }
-                                ?>
+                                } ?>
                                 <form method="get" id="form" enctype="multipart/form-data" action="">
                                     <label for="exampleInputEmail1">ระบบค้นหารอบเปิดจอง จากชื่อคณะ</label>
                                     <input type="text" class="form-control" id="search" name="search" placeholder="ป้อนชื่อคณะที่ต้องการหา">
@@ -87,8 +82,7 @@ if (strlen($_SESSION['id'] == 0)) {
 
                   <br> <br>
                   </center>";
-                                }
-                                ?>
+                                } ?>
                                 <div class="col-12">
                                     <thead>
                                         <tr>
@@ -184,4 +178,5 @@ if (strlen($_SESSION['id'] == 0)) {
     </body>
 
     </html>
-<?php } ?>
+<?php
+} ?>

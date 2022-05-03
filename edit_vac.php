@@ -1,13 +1,11 @@
 <?php
 session_start();
 include 'dbconnection.php';
-// checking session is valid for not 
-if (strlen($_SESSION['email'] == NULL)) {
+// checking session is valid for not
+if (strlen($_SESSION['email'] == null)) {
     header('location:logout.php');
 } else {
-
-    $email = $_SESSION['email'];
-?>
+    $email = $_SESSION['email']; ?>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -34,7 +32,7 @@ if (strlen($_SESSION['email'] == NULL)) {
                     <p>กรุณากรอกข้อมูลการฉีดวัคซีน</p>
                 </center>
                 <?php $ret = mysqli_query($connect, "SELECT * from vacc_log where Email = '$email'");
-                while ($row = mysqli_fetch_array($ret)) { ?>
+    while ($row = mysqli_fetch_array($ret)) { ?>
                     <div class="col">
                         <label class="form-label">จำนวนวัคซีนที่ได้รับ</label>
                         <select name="vacnum" class="form-select">
@@ -51,7 +49,8 @@ if (strlen($_SESSION['email'] == NULL)) {
                         </select>
                     </div>
                     <?php
-                        function show_sele_vac(){
+                        function show_sele_vac()
+                        {
                             $output = '
                             <option value="Sinovac">CoronaVac (Sinovac)</option>
                                 <option value="Astrazeneca">Astrazeneca (Covisshield)</option>

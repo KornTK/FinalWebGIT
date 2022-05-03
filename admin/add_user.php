@@ -2,17 +2,14 @@
 session_start();
 
 include 'dbconnection.php';
-// checking session is valid for not 
+// checking session is valid for not
 if (strlen($_SESSION['id'] == 0)) {
     header('location:logout.php');
 } else {
-
     $search = isset($_GET['search']) ? $_GET['search'] : '';
 
     $sql = "SELECT * FROM user WHERE name LIKE '%$search%'";
-    $result = mysqli_query($connect, $sql);
-
-?>
+    $result = mysqli_query($connect, $sql); ?>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -141,8 +138,7 @@ if (strlen($_SESSION['id'] == 0)) {
                                 <option value="Sputnik V">Sputnik V</option>
                             ';
                             echo $output;
-                        };
-                        ?>
+                        }; ?>
                         <div class="row mt-3 mb-3">
                             <div class="col">
                                 <label class="form-label">วัคซีนเข็มที่ 1</label><br>
@@ -230,4 +226,5 @@ if (strlen($_SESSION['id'] == 0)) {
     </body>
 
     </html>
-<?php } ?>
+<?php
+} ?>

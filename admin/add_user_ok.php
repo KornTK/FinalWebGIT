@@ -1,16 +1,15 @@
 <?php
 session_start();
 include 'dbconnection.php';
-// checking session is valid for not 
+// checking session is valid for not
 if (strlen($_SESSION['id'] == 0)) {
     header('location:logout.php');
 } else {
-
     $user_id = $_POST['user_id'];
 
     $extension = pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
 
-    //form , to 
+    //form , to
     move_uploaded_file($_FILES["file"]["tmp_name"], "../pic/user/" . $user_id . "." . $extension);
 
 
@@ -48,8 +47,7 @@ if (strlen($_SESSION['id'] == 0)) {
          '$email', ' $vacnum', '$vac1', '$vac2', '$vac3', '$vac4', '$vac5',
           '$vac6', '$vac7', '$vac8');";
 
-    $updatevac = mysqli_query($connect, $queryvac);
-?>
+    $updatevac = mysqli_query($connect, $queryvac); ?>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -101,4 +99,5 @@ if (strlen($_SESSION['id'] == 0)) {
     </body>
 
     </html>
-<?php } ?>
+<?php
+} ?>

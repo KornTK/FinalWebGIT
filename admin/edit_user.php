@@ -2,17 +2,14 @@
 session_start();
 
 include 'dbconnection.php';
-// checking session is valid for not 
+// checking session is valid for not
 if (strlen($_SESSION['id'] == 0)) {
     header('location:logout.php');
 } else {
-
     $search = isset($_POST['user_id']) ? $_POST['user_id'] : '';
 
     $sql = "SELECT * FROM user WHERE user_id LIKE '%$search%'";
-    $result = mysqli_query($connect, $sql);
-
-?>
+    $result = mysqli_query($connect, $sql); ?>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -126,4 +123,5 @@ if (strlen($_SESSION['id'] == 0)) {
     </body>
 
     </html>
-<?php } ?>
+<?php
+} ?>

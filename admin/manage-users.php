@@ -2,30 +2,27 @@
 session_start();
 
 include 'dbconnection.php';
-// checking session is valid for not 
+// checking session is valid for not
 if (strlen($_SESSION['id'] == 0)) {
-  header('location:logout.php');
+    header('location:logout.php');
 } else {
+    if (isset($_GET['delete'])) {
+        $delete_id = $_GET['delete'];
+        $deletestmt = $conn->query("DELETE FROM user WHERE user_id = $delete_id");
+        $deletestmt->execute();
 
-  if (isset($_GET['delete'])) {
-    $delete_id = $_GET['delete'];
-    $deletestmt = $conn->query("DELETE FROM user WHERE user_id = $delete_id");
-    $deletestmt->execute();
-
-    if ($deletestmt) {
-      echo "<script>alert('Data has been deleted successfully');</script>";
-      $_SESSION['success'] = "Data has been deleted succesfully";
-      header("refresh:1; url=manage-users.php");
+        if ($deletestmt) {
+            echo "<script>alert('Data has been deleted successfully');</script>";
+            $_SESSION['success'] = "Data has been deleted succesfully";
+            header("refresh:1; url=manage-users.php");
+        }
     }
-  }
 
 
-  $search = isset($_GET['search']) ? $_GET['search'] : '';
+    $search = isset($_GET['search']) ? $_GET['search'] : '';
 
-  $sql = "SELECT * FROM user WHERE name LIKE '%$search%'";
-  $result = mysqli_query($connect, $sql);
-
-?>
+    $sql = "SELECT * FROM user WHERE name LIKE '%$search%'";
+    $result = mysqli_query($connect, $sql); ?>
 
   <!DOCTYPE html>
   <html lang="en">
@@ -60,12 +57,11 @@ if (strlen($_SESSION['id'] == 0)) {
                 <br>
                 <?php
                 if ($search != "") {
-                  echo "กําลังแสดงข้อมูลชื่อ :" . $search;
-                  $showmsg = "กําลังแสดงข้อมูลของชื่อ :" . $search;
+                    echo "กําลังแสดงข้อมูลชื่อ :" . $search;
+                    $showmsg = "กําลังแสดงข้อมูลของชื่อ :" . $search;
                 } else {
-                  $showmsg = "";
-                }
-                ?>
+                    $showmsg = "";
+                } ?>
                 <form method="get" id="form" enctype="multipart/form-data" action="">
                   <label for="exampleInputEmail1"> ระบบค้นหาผู้ใช้</label>
                   <input type="text" class="form-control" id="search" name="search" placeholder="ป้อนชื่อที่ต้องการหา">
@@ -81,14 +77,13 @@ if (strlen($_SESSION['id'] == 0)) {
                 <hr>
                 <?php
                 if ($showmsg != null) {
-                  echo '<center> <h2>' . $showmsg . '</h2> </center>';
-                  echo "<center>
+                    echo '<center> <h2>' . $showmsg . '</h2> </center>';
+                    echo "<center>
                   <a href='manage-users.php' class='btn btn-primary'>แสดงทั้งหมด</a>
 
                   <br> <br>
                   </center>";
-                }
-                ?>
+                } ?>
                 <thead>
                   <tr>
                     <th width='10%'>รหัสประจําตัว</th>
@@ -206,4 +201,5 @@ if (strlen($_SESSION['id'] == 0)) {
   </body>
 
   </html>
-<?php } ?>
+<?php
+} ?>

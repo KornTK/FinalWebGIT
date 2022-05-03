@@ -1,19 +1,17 @@
 <?php
 session_start();
 include 'dbconnection.php';
-// checking session is valid for not 
+// checking session is valid for not
 if (strlen($_SESSION['email'] == null)) {
     header('location:logout.php');
 } else {
     $email = $_SESSION['email'];
     $ret = mysqli_query($connect, "SELECT * from system_setting");
-        while ($row = mysqli_fetch_array($ret)) {
-            if($row["book_atk_allow"] == "true"){
-                header('location:book_atk.php');
-            }
+    while ($row = mysqli_fetch_array($ret)) {
+        if ($row["book_atk_allow"] == "true") {
+            header('location:book_atk.php');
         }
-
-?>
+    } ?>
 
     <!DOCTYPE html>
     <html lang="en">

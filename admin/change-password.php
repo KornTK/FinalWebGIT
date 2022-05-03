@@ -7,7 +7,7 @@ if (strlen($_SESSION['id'] == 0)) {
     header('location:logout.php');
 } else {
 
-    // for  password change   
+    // for  password change
     if (isset($_POST['Submit'])) {
         $oldpassword = md5($_POST['oldpass']);
         $sql = mysqli_query($con, "SELECT password FROM admin where password='$oldpassword'");
@@ -17,12 +17,11 @@ if (strlen($_SESSION['id'] == 0)) {
             $newpass = md5($_POST['newpass']);
             $ret = mysqli_query($con, "update admin set password='$newpass' where id='$adminid'");
             $_SESSION['msg'] = "Password Changed Successfully !!";
-            //header('location:user.php');
+        //header('location:user.php');
         } else {
             $_SESSION['msg'] = "Old Password not match !!";
         }
-    }
-?>
+    } ?>
     <script language="javascript" type="text/javascript">
         function valid() {
             if (document.form1.oldpass.value == "") {
@@ -189,4 +188,5 @@ if (strlen($_SESSION['id'] == 0)) {
     </body>
 
     </html>
-<?php } ?>
+<?php
+} ?>

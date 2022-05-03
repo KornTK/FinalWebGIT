@@ -2,14 +2,11 @@
 session_start();
 include 'dbconnection.php';
 
-// checking session is valid for not 
-if (strlen($_SESSION['email']==NULL)) {
-  header('location:logout.php');
-  } else{
-
-$email = $_SESSION['email'];
-
-?>
+// checking session is valid for not
+if (strlen($_SESSION['email']==null)) {
+    header('location:logout.php');
+} else {
+    $email = $_SESSION['email']; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +23,7 @@ $email = $_SESSION['email'];
 </head>
 
 <body>
-<?php include 'header.php';?>   
+<?php include 'header.php'; ?>   
 
     <div class="container mt-3 mb-3">
     <div class="row mt-3 mb-3">
@@ -34,17 +31,14 @@ $email = $_SESSION['email'];
                 <div class="p3css p-3" >
                     <div class="profile-img">
                         <center>
-                        <?php $ret=mysqli_query($connect,"SELECT * from user where Email = '$email'");
-							  while($row=mysqli_fetch_array($ret))
-							  {
-
-                            echo '<img src="pic/user/'.$row['img'].'" width="55%" style="border-radius: 10%"/>';
-
-                            ?>
+                        <?php $ret=mysqli_query($connect, "SELECT * from user where Email = '$email'");
+    while ($row=mysqli_fetch_array($ret)) {
+        echo '<img src="pic/user/'.$row['img'].'" width="55%" style="border-radius: 10%"/>'; ?>
                             <br><br>
                             <h2><?php echo $row["prefix"].$row["name"].' '.$row["lname"] ; ?></h2>
                             <h4><?php echo $row["user_id"]; ?></h4>
-                            <?php }?>
+                            <?php
+    } ?>
                         </center>
                     </div>
 
@@ -71,9 +65,8 @@ $email = $_SESSION['email'];
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $ret=mysqli_query($connect,"SELECT * from user where Email = '$email'");
-							  while($row=mysqli_fetch_array($ret))
-							  {?>
+                            <?php $ret=mysqli_query($connect, "SELECT * from user where Email = '$email'");
+    while ($row=mysqli_fetch_array($ret)) {?>
                             <tr>
                                 <td>คณะ</td>
                                 <td><?php echo $row["faculty"]; ?></td>
@@ -86,7 +79,7 @@ $email = $_SESSION['email'];
                                 <td>เบอร์โทรศัพท์</td>
                                 <td><?php echo $row["phone"]; ?></td>
                             </tr>
-                            <?php }?>
+                            <?php } ?>
                         </tbody>
                     </table>
                     <br>
@@ -104,9 +97,8 @@ $email = $_SESSION['email'];
                             </tr>
                         </thead>
                         <tbody>
-                        <?php $ret=mysqli_query($connect,"SELECT * from vacc_log where Email = '$email'");
-							  while($row=mysqli_fetch_array($ret))
-							  {?>
+                        <?php $ret=mysqli_query($connect, "SELECT * from vacc_log where Email = '$email'");
+    while ($row=mysqli_fetch_array($ret)) {?>
                             <tr>
                                 <td>เข็มที่ 1</td>
                                 <td><?php echo $row["vac1"]; ?></td>
@@ -139,7 +131,7 @@ $email = $_SESSION['email'];
                                 <td>เข็มที่ 8</td>
                                 <td><?php echo $row["vac8"]; ?></td>
                             </tr>
-                            <?php }?>
+                            <?php } ?>
                         </tbody>
                     </table>
                     <br>
@@ -151,7 +143,7 @@ $email = $_SESSION['email'];
                 </div>
             </div>
         </div>
-        <?php include 'footer.php';?>
+        <?php include 'footer.php'; ?>
     </div>
     
     <script src="js/bootstrap.min.js"></script>

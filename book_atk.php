@@ -1,13 +1,11 @@
 <?php
 session_start();
 include 'dbconnection.php';
-// checking session is valid for not 
-if (strlen($_SESSION['email'] == NULL)) {
+// checking session is valid for not
+if (strlen($_SESSION['email'] == null)) {
     header('location:logout.php');
 } else {
-
-    $email = $_SESSION['email'];
-?>
+    $email = $_SESSION['email']; ?>
 
 <!DOCTYPE html>
 <html lang="en">

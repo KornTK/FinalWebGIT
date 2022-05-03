@@ -1,13 +1,11 @@
 <?php
 session_start();
 include 'dbconnection.php';
-// checking session is valid for not 
-if (strlen($_SESSION['email'] == NULL)) {
+// checking session is valid for not
+if (strlen($_SESSION['email'] == null)) {
     header('location:logout.php');
 } else {
-
-    $email = $_SESSION['email'];
-?>
+    $email = $_SESSION['email']; ?>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -26,7 +24,7 @@ if (strlen($_SESSION['email'] == NULL)) {
     <body>
         <?php include 'header.php'; ?>
         <?php $ret = mysqli_query($connect, "SELECT * from user where Email = '$email'");
-        while ($row = mysqli_fetch_array($ret)) { ?>
+    while ($row = mysqli_fetch_array($ret)) { ?>
 
             <form action="comple_edit.php" method="POST" enctype="multipart/form-data">
                 <div class="container mt-3 mb-3" style="background-color: white; border-radius: 20px;

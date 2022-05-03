@@ -3,23 +3,23 @@ session_start();
 error_reporting(0);
 include("dbconnection.php");
 if (isset($_POST['login'])) {
-  $email = $_POST['SiSID'];
-  $pass = ($_POST['SiSpassword']);
+    $email = $_POST['SiSID'];
+    $pass = ($_POST['SiSpassword']);
 
-  $ret = mysqli_query($connect, "SELECT * FROM user WHERE Email='$email' and password='$pass'");
-  $num = mysqli_fetch_array($ret);
-  if ($num > 0) {
-    $extra = "show_infor.php";
-    $_SESSION['email'] = $email;
-    echo "<script>window.location.href='" . $extra . "'</script>";
-    exit();
-  } else {
-    $_SESSION['action1'] = "*ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
-    $extra = "index.php";
-    echo $num;
-    echo "<script>window.location.href='" . $extra . "'</script>";
-    exit();
-  }
+    $ret = mysqli_query($connect, "SELECT * FROM user WHERE Email='$email' and password='$pass'");
+    $num = mysqli_fetch_array($ret);
+    if ($num > 0) {
+        $extra = "show_infor.php";
+        $_SESSION['email'] = $email;
+        echo "<script>window.location.href='" . $extra . "'</script>";
+        exit();
+    } else {
+        $_SESSION['action1'] = "*ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+        $extra = "index.php";
+        echo $num;
+        echo "<script>window.location.href='" . $extra . "'</script>";
+        exit();
+    }
 }
 
 ?>
@@ -53,7 +53,7 @@ if (isset($_POST['login'])) {
           <p>กรุณากรอกบัญชี PSU Passport และรหัสผ่าน</p>
         </center>
         <p style="color:#F00; padding-top:20px;" align="center">
-          <?php 
+          <?php
           echo $_SESSION['action1']; ?><?php echo $_SESSION['action1'] = ""; ?></p>
         <div class="login-wrap">
           <input name="SiSID" class="form-control" placeholder="User ID" autofocus>
