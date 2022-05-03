@@ -12,7 +12,7 @@ if (strlen($_SESSION['id'] == 0)) {
         $delete_id = $_GET['delete'];
         $deletestmt = $conn->query("DELETE FROM atk_open WHERE atopen_id = $delete_id");
         $deletestmt->execute();
-        
+
         if ($deletestmt) {
             echo "<script>alert('Data has been deleted successfully');</script>";
             $_SESSION['success'] = "Data has been deleted succesfully";
@@ -41,7 +41,7 @@ if (strlen($_SESSION['id'] == 0)) {
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
-       
+
 
 
 
@@ -118,11 +118,11 @@ if (strlen($_SESSION['id'] == 0)) {
                                                     </form>
                                                 </td>
                                                 <td>
-                                                    
-                                                        <div>
-                                                            <a data-id="<?php echo $row["atopen_id"]; ?>" href="?delete=<?php echo $row["atopen_id"]; ?>" class="btn btn-danger delete-btn" > ลบ <i class="fa fa-times" aria-hidden="true"></i></a>
-                                                        </div>
-                                                    
+
+                                                    <div>
+                                                        <a data-id="<?php echo $row["atopen_id"]; ?>" href="?delete=<?php echo $row["atopen_id"]; ?>" class="btn btn-danger delete-btn"> ลบ <i class="fa fa-times" aria-hidden="true"></i></a>
+                                                    </div>
+
                                                 </td>
                                             </tr>
                                     </thead>
@@ -131,54 +131,53 @@ if (strlen($_SESSION['id'] == 0)) {
                         </div>
                     </div>
                 </div>
-                
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+                <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
                 <script>
+                    //เข้าถึง class 
+                    $(".delete-btn").click(function(e) {
+                        var userId = $(this).data('id');
+                        e.preventDefault();
+                        deleteConfirm(userId);
+                    })
 
-        //เข้าถึง class 
-        $(".delete-btn").click(function(e) {
-            var userId = $(this).data('id');
-            e.preventDefault();
-            deleteConfirm(userId);
-        })
-
-        function deleteConfirm(userId) {
-            Swal.fire({
-                title: 'คุณต้องการจะลบใช่หรือไม่?',
-                icon: 'warning',
-                text: "หากลบแล้ว จะไม่สามารถกู้คืนได้!",
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'ลบ',
-                showLoaderOnConfirm: true,
-                preConfirm: function() {
-                    return new Promise(function(resolve) {
-                        $.ajax({
-                                url: 'show_atk_roud.php',
-                                type: 'GET',
-                                data: 'delete=' + userId,
-                            })
-                            .done(function() {
-                                Swal.fire({
-                                    title: 'success',
-                                    text: 'ลบเรียบร้อยแล้ว!',
-                                    icon: 'success',
-                                }).then(() => {
-                                    document.location.href = 'show_atk_roud.php';
-                                })
-                            })
-                            .fail(function() {
-                                Swal.fire('Oops...', 'มีบางอย่างผิดพลาดกับระบบหลังบ้าน ajax !', 'error')
-                                window.location.reload();
-                            });
-                    });
-                },
-            });
-        }
-    </script>
+                    function deleteConfirm(userId) {
+                        Swal.fire({
+                            title: 'คุณต้องการจะลบใช่หรือไม่?',
+                            icon: 'warning',
+                            text: "หากลบแล้ว จะไม่สามารถกู้คืนได้!",
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'ลบ',
+                            showLoaderOnConfirm: true,
+                            preConfirm: function() {
+                                return new Promise(function(resolve) {
+                                    $.ajax({
+                                            url: 'show_atk_roud.php',
+                                            type: 'GET',
+                                            data: 'delete=' + userId,
+                                        })
+                                        .done(function() {
+                                            Swal.fire({
+                                                title: 'success',
+                                                text: 'ลบเรียบร้อยแล้ว!',
+                                                icon: 'success',
+                                            }).then(() => {
+                                                document.location.href = 'show_atk_roud.php';
+                                            })
+                                        })
+                                        .fail(function() {
+                                            Swal.fire('Oops...', 'มีบางอย่างผิดพลาดกับระบบหลังบ้าน ajax !', 'error')
+                                            window.location.reload();
+                                        });
+                                });
+                            },
+                        });
+                    }
+                </script>
 
 
 

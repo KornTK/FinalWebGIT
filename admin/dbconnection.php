@@ -24,5 +24,3 @@ echo "Failed to connect to MySQL: " . mysqli_connect_error();
      } catch(PDOException $e) {
      echo "Connection failed: " . $e->getMessage();
  }
-?>
-

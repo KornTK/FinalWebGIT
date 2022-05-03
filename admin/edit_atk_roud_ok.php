@@ -68,31 +68,32 @@ if (strlen($_SESSION['id'] == 0)) {
         </section>
         <script type="text/javascript">
             let timerInterval
-    $(document).ready(function() {
-        Swal.fire({
-  title: 'อัพเดทข้อมูลรอบจอง ATK เรียบร้อยแล้ว!',
-  icon: 'success',
-  html: 'ระบบจะพาไปหน้าแสดงรอบทั้งหมดในอีก <b></b> มิลิวินาที.',
-  timer: 3000,
-  timerProgressBar: true,
-  didOpen: () => {
-    Swal.showLoading()
-    const b = Swal.getHtmlContainer().querySelector('b')
-    timerInterval = setInterval(() => {
-      b.textContent = Swal.getTimerLeft()
-    }, 10)
-  },
-  willClose: () => {
-    clearInterval(timerInterval)
-  }
-}).then((result) => {
-  /* if timer is end */
-  if (result.dismiss === Swal.DismissReason.timer) {
-    console.log('I was closed by the timer')
-    window.location.href = "show_atk_roud.php";
-  }});
-    });
-</script>
+            $(document).ready(function() {
+                Swal.fire({
+                    title: 'อัพเดทข้อมูลรอบจอง ATK เรียบร้อยแล้ว!',
+                    icon: 'success',
+                    html: 'ระบบจะพาไปหน้าแสดงรอบทั้งหมดในอีก <b></b> มิลิวินาที.',
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        const b = Swal.getHtmlContainer().querySelector('b')
+                        timerInterval = setInterval(() => {
+                            b.textContent = Swal.getTimerLeft()
+                        }, 10)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    /* if timer is end */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        console.log('I was closed by the timer')
+                        window.location.href = "show_atk_roud.php";
+                    }
+                });
+            });
+        </script>
     </body>
 
     </html>

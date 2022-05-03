@@ -25,7 +25,7 @@ if (strlen($_SESSION['id'] == 0)) {
     $sex = $_POST['sex'];
     $phone = $_POST['phone'];
     $faculty = $_POST['faculty'];
-    $namefile = $user_id .".". $extension;
+    $namefile = $user_id . "." . $extension;
 
     $query = "INSERT INTO `user` (`user_id`, `prefix`, `name`, `lname`, `Email`, `password`, `sex`, `phone`, `faculty`, `img`) VALUES (
         '$user_id','$prefix', '$name', '$lname', '$email', '$password', '$sex', '$phone',

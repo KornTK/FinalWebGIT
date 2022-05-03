@@ -11,9 +11,9 @@ if (strlen($_SESSION['id'] == 0)) {
     $date = $_POST['date'];
     $resu = $_POST['resu'];
     $resu_text;
-    if ($resu == 1){
+    if ($resu == 1) {
         $resu_text = "ติดเชื้อ (2ขีด)";
-    }else{
+    } else {
         $resu_text = "ไม่ติดเชื้อ (1ขีด)";
     }
 
@@ -68,34 +68,35 @@ if (strlen($_SESSION['id'] == 0)) {
                 </div>
             </section>
         </section>
-        
-<script type="text/javascript">
+
+        <script type="text/javascript">
             let timerInterval
-    $(document).ready(function() {
-        Swal.fire({
-  title: 'เพิ่มผลตรวจเรียบร้อยแล้ว!',
-  icon: 'success',
-  html: 'ระบบจะพาไปหน้าแสดงผลตรวจทั้งหมดในอีก <b></b> มิลิวินาที.',
-  timer: 3000,
-  timerProgressBar: true,
-  didOpen: () => {
-    Swal.showLoading()
-    const b = Swal.getHtmlContainer().querySelector('b')
-    timerInterval = setInterval(() => {
-      b.textContent = Swal.getTimerLeft()
-    }, 10)
-  },
-  willClose: () => {
-    clearInterval(timerInterval)
-  }
-}).then((result) => {
-  /* if timer is end */
-  if (result.dismiss === Swal.DismissReason.timer) {
-    console.log('I was closed by the timer')
-    window.location.href = "show_atk_result.php";
-  }});
-    });
-</script>
+            $(document).ready(function() {
+                Swal.fire({
+                    title: 'เพิ่มผลตรวจเรียบร้อยแล้ว!',
+                    icon: 'success',
+                    html: 'ระบบจะพาไปหน้าแสดงผลตรวจทั้งหมดในอีก <b></b> มิลิวินาที.',
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        const b = Swal.getHtmlContainer().querySelector('b')
+                        timerInterval = setInterval(() => {
+                            b.textContent = Swal.getTimerLeft()
+                        }, 10)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    /* if timer is end */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        console.log('I was closed by the timer')
+                        window.location.href = "show_atk_result.php";
+                    }
+                });
+            });
+        </script>
     </body>
 
     </html>

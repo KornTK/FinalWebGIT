@@ -39,8 +39,7 @@ if (strlen($_SESSION['id'] == 0)) {
                         <div class="row mt-3 mb-3">
                             <div class="col">
                                 <label class="form-label">วันที่</label>
-                                <input type="date" name="date" placeholder="dd-mm-yyyy" value=""
-        min="1997-01-01" max="2030-12-31" class="form-control" required="">
+                                <input type="date" name="date" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31" class="form-control" required="">
                             </div>
                             <div class="col">
                                 <label class="form-label">เวลา</label>

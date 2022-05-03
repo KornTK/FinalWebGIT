@@ -33,70 +33,69 @@ if (strlen($_SESSION['id'] == 0)) {
         <br>
         <section id="main-content">
             <section class="wrapper">
-            <?php while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+                <?php while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
 
-                <form action="edit_atk_roud_ok.php" method="POST" enctype="multipart/form-data">
-                    <div class="container mt-3 mb-3" style="background-color: white; border-radius: 20px;
+                    <form action="edit_atk_roud_ok.php" method="POST" enctype="multipart/form-data">
+                        <div class="container mt-3 mb-3" style="background-color: white; border-radius: 20px;
         border: none; padding: 50px; padding-top: 25px;">
-                        <center>
-                            <h1>แก้ไขข้อมูลรอบจอง ATK <br> ไอดี : <?php echo $row["atopen_id"]; ?></h1>
-                            <input type="hidden" id="atopen_id" name="atopen_id" value="<?php echo $row["atopen_id"]; ?>">
+                            <center>
+                                <h1>แก้ไขข้อมูลรอบจอง ATK <br> ไอดี : <?php echo $row["atopen_id"]; ?></h1>
+                                <input type="hidden" id="atopen_id" name="atopen_id" value="<?php echo $row["atopen_id"]; ?>">
 
-                            <p>กรุณากรอกข้อมูลให้ครบทุกช่อง</p>
-                        </center>
+                                <p>กรุณากรอกข้อมูลให้ครบทุกช่อง</p>
+                            </center>
 
-                        <div class="row mt-3 mb-3">
-                            <div class="col">
-                                <label class="form-label">วันที่</label>
-                                <input type="date" name="date" placeholder="dd-mm-yyyy" value="<?php echo $row["date"]; ?>"
-        min="1997-01-01" max="2030-12-31" class="form-control" required="">
+                            <div class="row mt-3 mb-3">
+                                <div class="col">
+                                    <label class="form-label">วันที่</label>
+                                    <input type="date" name="date" placeholder="dd-mm-yyyy" value="<?php echo $row["date"]; ?>" min="1997-01-01" max="2030-12-31" class="form-control" required="">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">เวลา</label>
+                                    <input type="text" name="time" class="form-control" required="" value="<?php echo $row["time"]; ?>">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">สถานที่</label>
+                                    <input type="text" name="loca" class="form-control" required="" value="<?php echo $row["location"]; ?>">
+                                </div>
                             </div>
-                            <div class="col">
-                                <label class="form-label">เวลา</label>
-                                <input type="text" name="time" class="form-control" required="" value="<?php echo $row["time"]; ?>">
+                            <div class="row mt-3 mb-3">
+                                <div class="col">
+                                    <label class="form-label">คณะ</label>
+                                    <select name="fac" class="form-select" required="" style="font-size: 1.2em;">
+                                        <option value="<?php echo $row["faculty"]; ?>" selected="">ค่าเดิม :<?php echo $row["faculty"]; ?></option>
+                                        <option value="CoC">COC</option>
+                                        <option value="FHT">FHT</option>
+                                        <option value="FHT">FIS</option>
+                                        <option value="FHT">FTE</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">ยี่ห้อชุดตรวจ</label>
+                                    <input type="text" name="band" class="form-control" required="" value="<?php echo $row["brand"]; ?>">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">จํานวนคนที่รับ</label>
+                                    <input type="number" name="howmany" class="form-control" required="" value="<?php echo $row["amount"]; ?>">
+
+                                </div>
                             </div>
-                            <div class="col">
-                                <label class="form-label">สถานที่</label>
-                                <input type="text" name="loca" class="form-control" required="" value="<?php echo $row["location"]; ?>">
+
+                            <div class="row mt-3 mb-3">
+                                <div class="col">
+                                    <center>
+                                        <br>
+                                        <a href="show_atk_roud.php" class="btn btn-info" role="button">กลับหน้าจัดการวันตรวจ ATK</a>
+                                        <button type="submit" class="btn btn-success">แก้ไขข้อมูลรอบจอง ATK</button>
+                                    </center>
+                                </div>
                             </div>
+                            <div class="row mt-3 mb-3">
+
+                            </div>
+
                         </div>
-                        <div class="row mt-3 mb-3">
-                            <div class="col">
-                                <label class="form-label">คณะ</label>
-                                <select name="fac" class="form-select" required="" style="font-size: 1.2em;" >
-                                    <option value="<?php echo $row["faculty"]; ?>" selected="">ค่าเดิม :<?php echo $row["faculty"]; ?></option>
-                                    <option value="CoC">COC</option>
-                                    <option value="FHT">FHT</option>
-                                    <option value="FHT">FIS</option>
-                                    <option value="FHT">FTE</option>
-                                </select>
-                            </div>
-                            <div class="col">
-                                <label class="form-label">ยี่ห้อชุดตรวจ</label>
-                                <input type="text" name="band" class="form-control" required="" value="<?php echo $row["brand"]; ?>">
-                            </div>
-                            <div class="col">
-                                <label class="form-label">จํานวนคนที่รับ</label>
-                                <input type="number" name="howmany" class="form-control" required="" value="<?php echo $row["amount"]; ?>">
-
-                            </div>
-                        </div>
-
-                        <div class="row mt-3 mb-3">
-                            <div class="col">
-                                <center>
-                                    <br>
-                                    <a href="show_atk_roud.php" class="btn btn-info" role="button">กลับหน้าจัดการวันตรวจ ATK</a>
-                                    <button type="submit" class="btn btn-success">แก้ไขข้อมูลรอบจอง ATK</button>
-                                </center>
-                            </div>
-                        </div>
-                        <div class="row mt-3 mb-3">
-
-                        </div>
-
-                    </div>
-                </form>
+                    </form>
                 <?php } ?>
 
             </section>
