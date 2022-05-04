@@ -119,6 +119,8 @@ if (strlen($_SESSION['email'] == null)) {
     </div>
 
     <script src="js/bootstrap.min.js"></script>
+    <?php include 'footer.php'; ?>
+
 </body>
 
 </html>

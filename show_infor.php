@@ -154,7 +154,6 @@ if (strlen($_SESSION['email']==null)) {
                 </div>
             </div>
         </div>
-        <?php include 'footer.php'; ?>
     </div>
     
     <script src="js/bootstrap.min.js"></script>
@@ -192,6 +191,8 @@ function confirmalert() {
 
 
 </script>
+<?php include 'footer.php'; ?>
+
 </body>
 
 </html>

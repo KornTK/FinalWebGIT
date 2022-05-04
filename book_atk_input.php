@@ -14,7 +14,7 @@ if (strlen($_SESSION['email'] == null)) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bio Update</title>
+        <title>Recheck Booking ATK</title>
 
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link href="assets/tem.css" rel="stylesheet">
@@ -26,7 +26,7 @@ if (strlen($_SESSION['email'] == null)) {
         <?php $ret = mysqli_query($connect, "SELECT * from atk_open where atopen_id = '$atopen_id'");
     while ($row = mysqli_fetch_array($ret)) { ?>
 
-<form action="book_atk_input_save.php" method="get" enctype="multipart/form-data">
+<form action="book_atk_input_save.php" method="post" enctype="multipart/form-data">
                         <div class="container mt-3 mb-3" style="background-color: white; border-radius: 20px;
         border: none; padding: 50px; padding-top: 25px;">
                             <center>

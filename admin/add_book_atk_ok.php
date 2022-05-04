@@ -11,7 +11,7 @@ if (strlen($_SESSION['id'] == 0)) {
     $date = $_POST['date'];
     $time = $_POST['time'];
 
-    // echo $date,$time,$loca,$fac,$band,$howmany;
+   
     $sql = "INSERT INTO `atk_booking` (`Book_ID`, `atopen_id`, `user_id`, `Date`, `time`) VALUES (NULL,
      '$atopen_id', '$user_id', '$date', '$time');";
 
