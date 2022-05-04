@@ -54,6 +54,7 @@ if (strlen($_SESSION['email']==null)) {
                         <form action="book_atk_system.php" method="POST" enctype="multipart/form-data">
                             <button type="submit" class="btn btn-primary btn-lg">จองเวลาตรวจ</button>
                         </form>
+    
                         <br>
                         
                         <button type="button" onclick="confirmalert();" class="btn btn-danger btn-lg">ออกจากระบบ</button>

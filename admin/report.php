@@ -6,9 +6,8 @@ include 'dbconnection.php';
 if (strlen($_SESSION['id'] == 0)) {
     header('location:logout.php');
 } else {
-    $search = isset($_GET['search']) ? $_GET['search'] : '';
 
-    $sql = "SELECT * FROM user WHERE name LIKE '%$search%' ";
+    $sql = "SELECT * FROM report_date ";
     $result = mysqli_query($connect, $sql); ?>
 
   <!DOCTYPE html>
@@ -54,37 +53,104 @@ if (strlen($_SESSION['id'] == 0)) {
             </div>
 
             <tbody>
+            <?php
+                $row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
+                              ?>
               <tr>
-                <td>11/1/2565</td>
-                <td>124 คน</td>
+                <td><?php echo $row["p1"]; ?></td>
+               
                 <td>
-                  <form action="manage-users.php" method="post">
+
+                <?php
+                 $p1 = $row["p1"];
+                    $sql1 = "SELECT COUNT(*) AS total1
+                    FROM atk_open
+                    WHERE date = '$p1'";
+                    $resultp1 = mysqli_query($connect, $sql1); 
+                    
+                    
+                    ?>
+                <?php 
+                $rowp1 = mysqli_fetch_array($resultp1, MYSQLI_ASSOC); 
+                echo $rowp1["total1"]." คน"; ?>
+
+
+                </td>
+                <td>
+                  <form action="manage-users.php" method="get">
+                  <input type="hidden" id="date" name="date" value="<?php echo $p1; ?>">
+
+                    <button type="submit" class="btn btn-primary">ดูรายชื่อผู้เข้ารับการตรวจ</button>
+                  </form>
+                </td>
+                </tr>
+                <tr>
+                <td><?php echo $row["p2"]; ?></td>
+                <td>
+
+                <?php
+                 $p2 = $row["p2"];
+                    $sql2 = "SELECT COUNT(*) AS total2
+                    FROM atk_open
+                    WHERE date = '$p2'";
+                    $resultp2 = mysqli_query($connect, $sql2); 
+                    
+                    
+                    ?>
+                <?php 
+                $rowp2 = mysqli_fetch_array($resultp2, MYSQLI_ASSOC); 
+                echo $rowp2["total2"]." คน"; ?>
+
+
+                </td>
+                <td>
+                  <form action="manage-users.php" method="get">
+                  <input type="hidden" id="date" name="date" value="<?php echo $p2; ?>">
+
+                    <button type="submit" class="btn btn-primary">ดูรายชื่อผู้เข้ารับการตรวจ</button>
+                  </form>
+                </td>
+                </tr>
+                <td><?php echo $row["p3"]; ?></td>
+                <td>
+
+                <?php
+                 $p3 = $row["p3"];
+                    $sql3 = "SELECT COUNT(*) AS total3
+                    FROM atk_open
+                    WHERE date = '$p3'";
+                    $resultp3 = mysqli_query($connect, $sql3); 
+                    
+                    
+                    ?>
+                <?php 
+                $rowp3 = mysqli_fetch_array($resultp3, MYSQLI_ASSOC); 
+                echo $rowp3["total3"]." คน"; ?>
+
+
+                </td>
+                <td>
+                  <form action="manage-users.php" method="get">
+                  <input type="hidden" id="date" name="date" value="<?php echo $p3; ?>">
+
                     <button type="submit" class="btn btn-primary">ดูรายชื่อผู้เข้ารับการตรวจ</button>
                   </form>
                 </td>
               </tr>
-              <tr>
-                <td>25/1/2565</td>
-                <td>313 คน</td>
-                <td>
-                  <form action="manage-users.php" method="post">
-                    <button type="submit" class="btn btn-primary">ดูรายชื่อผู้เข้ารับการตรวจ</button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>12/2/2565</td>
-                <td>214 คน</td>
-                <td>
-                  <form action="manage-users.php" method="post">
-                    <button type="submit" class="btn btn-primary">ดูรายชื่อผู้เข้ารับการตรวจ</button>
-                  </form>
-                </td>
-              </tr>
+
 
 
             </tbody>
             </table>
+            <!-- ตรงตั้งค่าว่าจะนําอะไรมาแสดง -->
+            <form action="report_edit.php" method="post">
+            <label for="fname">เลือกวันที่จะนํามาแสดง :</label>
+  <input type="date" id="p1" name="p1" value="<?php echo $p1; ?>">
+  <input type="date" id="p2" name="p2" value="<?php echo $p2; ?>">
+  <input type="date" id="p3" name="p3" value="<?php echo $p3; ?>">
+  <input class="btn btn-info" type="submit" value="ตั้งค่า">
+
+            </form>
             <center>
               <br>
               <button class="btn btn-success" onClick="window.print()">ปริ้นรายงานหน้านี้</button>

@@ -72,10 +72,7 @@ if (strlen($_SESSION['id'] == 0)) {
                                         <option value="หญิง">หญิง</option>
                                     </select>
                                 </div>
-                                <div class="col">
-                                    <label class="form-label">รหัสนักศึกษา</label>
-                                    <input type="text" name="user_id" class="form-control" value="<?php echo $row["user_id"]; ?>" style="height: 3em;">
-                                </div>
+                                    <input type="hidden" name="user_id" class="form-control" value="<?php echo $row["user_id"]; ?>" style="height: 3em;" disabled>
                                 <div class="col">
                                     <label class="form-label">เบอร์โทรศัพท์</label>
                                     <input type="text" name="phone" class="form-control" value="<?php echo $row["phone"]; ?>" style="height: 3em;">

@@ -37,7 +37,7 @@ if (isset($_POST['login'])) {
   <link href="assets/tem.css" rel="stylesheet">
 </head>
 
-<body>
+<body >
   <center>
     <img src="pic/logo.png" alt="" width="20%" height="20%">
     <br>
@@ -51,7 +51,7 @@ if (isset($_POST['login'])) {
           <h1>Sign In</h1>
           <p>Please input your passport account name and your Password</p>
           <p>กรุณากรอกบัญชี PSU Passport และรหัสผ่าน</p>
-        </center>
+        
         <p style="color:#F00; padding-top:20px;" align="center">
           <?php
           echo $_SESSION['action1']; ?><?php echo $_SESSION['action1'] = ""; ?></p>
@@ -59,10 +59,10 @@ if (isset($_POST['login'])) {
           <input name="SiSID" class="form-control" placeholder="User ID" autofocus>
           <br>
           <input type="password" name="SiSpassword" class="form-control" placeholder="Password"><br>
-          <input name="login" class="btn btn-primary " type="submit">
+          <input name="login" class="btn btn-primary " type="submit" value="เข้าสู่ระบบ">
         </div>
       </form>
-
+</center>
     </div>
   </div>
   <script src="js/jquery.js"></script>
