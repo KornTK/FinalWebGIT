@@ -15,6 +15,29 @@ if (strlen($_SESSION['email'] == null)) {
     '$atopen_id', '$user_id', '$date', '$time');";
 
    $result = mysqli_query($connect, $sql);
+
+
+   $sql12 = "SELECT * FROM atk_open WHERE `atopen_id` = '$atopen_id' ";
+   $result12 = mysqli_query($connect, $sql12);
+
+   $row12 = mysqli_fetch_array($result12, MYSQLI_ASSOC);
+
+    $amoumt = $row12["amount"];
+    $amoumt_int = (int)$amoumt;
+   $amoumt_dis = $amoumt_int-1;
+
+
+   $sql2 = "UPDATE `atk_open` 
+   SET `amount`='$amoumt_dis' 
+   WHERE `atopen_id`='$atopen_id'";
+
+   $result2 = mysqli_query($connect, $sql2);
+
+
+   //test
+   echo $amoumt_int ;
+   echo  $amoumt_dis;
+
 ?>
     <!DOCTYPE html>
     <html lang="en">
