@@ -26,85 +26,85 @@ if (strlen($_SESSION['email'] == null)) {
         <?php $ret = mysqli_query($connect, "SELECT * from user where Email = '$email'");
     while ($row = mysqli_fetch_array($ret)) { ?>
 
-            <form action="comple_edit.php" method="POST" enctype="multipart/form-data">
-                <div class="container mt-3 mb-3" style="background-color: white; border-radius: 20px;
+<form action="edit_user_ok.php" method="post" enctype="multipart/form-data">
+                        <div class="container mt-3 mb-3" style="background-color: white; border-radius: 20px;
         border: none; padding: 50px; padding-top: 25px;">
-                    <center>
-                        <h1>อัพเดตประวัติ</h1>
-                        <p>Please input your things</p>
-                        <p>กรุณากรอกข้อมูลประวัติในระบบ</p>
+                            <center>
+                                <h1>อัพเดตประวัติ <br> คุณ : <?php echo $row["name"]; ?> <?php echo $row["lname"]; ?></h1>
+                                <p>Please input your things</p>
+                                <p>กรุณากรอกข้อมูลประวัติในระบบ</p>
 
-                    </center>
-                    <div class="row mt-3 mb-3">
-                        <div class="col">
-                            <label class="form-label">คำนำหน้าชื่อ</label>
-                            <select name="prefix" class="form-select">
-                                <option value="<?php echo $row["prefix"]; ?>" selected=""><?php echo $row["prefix"]; ?></option>
-                                <option value="นาย">นาย</option>
-                                <option value="นาง">นาง</option>
-                                <option value="นางสาว">นางสาว</option>
-                            </select>
+                            </center>
+                            <div class="row mt-3 mb-3">
+                                <div class="col">
+                                    <label class="form-label">คำนำหน้าชื่อ</label>
+                                    <select name="prefix" class="form-select" style="height: 3em;">
+                                        <option value="<?php echo $row["prefix"]; ?>" selected=""><?php echo $row["prefix"]; ?></option>
+                                        <option value="นาย">นาย</option>
+                                        <option value="นาง">นาง</option>
+                                        <option value="นางสาว">นางสาว</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">ชื่อ</label>
+                                    <input type="text" name="name" class="form-control" value="<?php echo $row["name"]; ?>" style="height: 3em;">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">นามสกุล</label>
+                                    <input type="text" name="lname" class="form-control" value="<?php echo $row["lname"]; ?>" style="height: 3em;">
+                                </div>
+                            </div>
+                            <div class="row mt-3 mb-3">
+                                <div class="col">
+                                    <label class="form-label">เพศ</label>
+                                    <select name="sex" class="form-select" style="height: 3em;">
+                                        <option value="<?php echo $row["sex"]; ?>" selected=""><?php echo $row["sex"]; ?></option>
+                                        <option value="ชาย">ชาย</option>
+                                        <option value="หญิง">หญิง</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">รหัสนักศึกษา</label>
+                                    <input type="text" name="user_id" class="form-control" value="<?php echo $row["user_id"]; ?>" style="height: 3em;">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">เบอร์โทรศัพท์</label>
+                                    <input type="text" name="phone" class="form-control" value="<?php echo $row["phone"]; ?>" style="height: 3em;">
+
+                                </div>
+                            </div>
+                            <div class="row mt-3 mb-3">
+
+                                <div class="col">
+                                    <label class="form-label">รหัสผ่าน</label>
+                                    <input type="text" name="password" class="form-control" value="<?php echo $row["password"]; ?>" style="height: 3em;">
+
+                                </div>
+                            </div>
+                            <input type="hidden" id="oldpic" name="oldpic" value="<?php echo $row["img"]; ?>">
+                        <?php } ?>
+                        <div class="row mt-3 mb-3">
+                            <div class="col">
+                                <label for="formFile" class="form-label">รูปโปรไฟล์</label>
+                                <input class="form-control" type="file" name="file">
+                                <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+                            </div>
                         </div>
-                        <div class="col">
-                            <label class="form-label">ชื่อ</label>
-                            <input type="text" name="name" class="form-control" value="<?php echo $row["name"]; ?>">
+                        <div class="row mt-3 mb-3">
+                            <div class="col">
+                                <center>
+                                    <br>
+                                    <a href="show_infor.php" class="btn btn-info" role="button">กลับหน้าแรก</a>
+                                    <button type="submit" class="btn btn-success">แก้ไขข้อมูลผู้ใช้งาน</button>
+                                </center>
+                            </div>
                         </div>
-                        <div class="col">
-                            <label class="form-label">นามสกุล</label>
-                            <input type="text" name="lname" class="form-control" value="<?php echo $row["lname"]; ?>">
-                        </div>
-                    </div>
-                    <div class="row mt-3 mb-3">
-                        <div class="col">
-                            <label class="form-label">เพศ</label>
-                            <select name="sex" class="form-select">
-                                <option value="<?php echo $row["sex"]; ?>" selected=""><?php echo $row["sex"]; ?></option>
-                                <option value="ชาย">ชาย</option>
-                                <option value="หญิง">หญิง</option>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <label class="form-label">รหัสนักศึกษา</label>
-                            <input type="text" name="stdid" class="form-control" value="<?php echo $row["user_id"]; ?>">
-                        </div>
-                        <div class="col">
-                            <label class="form-label">เบอร์โทรศัพท์</label>
-                            <input type="text" name="phone" class="form-control" value="<?php echo $row["phone"]; ?>">
+                        <div class="row mt-3 mb-3">
 
                         </div>
-                    </div>
-                    <div class="row mt-3 mb-3">
-                        <div class="col">
-                            <label class="form-label">Faculty</label>
-                            <select name="faculty" class="form-select" value="">
-                                <option value="<?php echo $row["faculty"]; ?>" selected=""><?php echo $row["faculty"]; ?></option>
-                                <option value="FHT">FHT</option>
-                                <option value="FTE">FTE</option>
-                                <option value="FIS">FIS</option>
-                                <option value="CoC">CoC</option>
-                                <option value="CoE">CoE</option>
-                            </select>
+
                         </div>
-                    </div>
-                <?php } ?>
-                <div class="row mt-3 mb-3">
-                    <div class="col">
-                        <label for="formFile" class="form-label">รูปโปรไฟล์</label>
-                        <input class="form-control" type="file" name="picfile">
-                        <input type="hidden" name="MAX_FILE_SIZE" value="100000">
-                    </div>
-                </div>
-                <div class="row mt-3 mb-3">
-                    <div class="col">
-                        <center>
-                            <br>
-                            <a href="show_infor.php" class="btn btn-info" role="button">กลับหน้าโปรไฟล์</a>
-                            <input name="updatebio" type="submit" class="btn btn-success" value="แก้ไขข้อมูล">
-                        </center>
-                    </div>
-                    >
-                </div>
-            </form>
+                    </form>
             <?php include 'footer.php'; ?>
             <script src="js/bootstrap.min.js"></script>
     </body>
