@@ -18,9 +18,9 @@ if (strlen($_SESSION['id'] == 0)) {
         }
     }
 
-    $search = isset($_GET['search']) ? $_GET['search'] : '';
+    $search = isset($_GET['date']) ? $_GET['date'] : '';
 
-    $sql = "SELECT * FROM atk_test WHERE user_id LIKE '%$search%'";
+    $sql = "SELECT * FROM atk_test WHERE Date LIKE '%$search%'";
     $result = mysqli_query($connect, $sql); ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -53,8 +53,8 @@ if (strlen($_SESSION['id'] == 0)) {
                                 <br>
                                 <?php
                                 if ($search != "") {
-                                    echo "กําลังแสดงข้อมูลของนักศึกษา :" . $search;
-                                    $showmsg = "กําลังแสดงข้อมูลของรหัสนักศึกษา :" . $search;
+                                    echo "กําลังแสดงข้อมูลของวันที่ :" . $search;
+                                    $showmsg = "กําลังแสดงข้อมูลของวันที่ :" . $search;
                                 } else {
                                     $showmsg = "";
                                 } ?>
@@ -76,7 +76,9 @@ if (strlen($_SESSION['id'] == 0)) {
 
                   <br> <br>
                   </center>";
-                                } ?>
+                                }
+                                 ?>
+                                 
                                 <div class="col-12">
                                     <table class="table  table-striped table-hover table-bordered">
                                         <tr>

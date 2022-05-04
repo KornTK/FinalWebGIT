@@ -67,6 +67,7 @@ if (strlen($_SESSION['id'] == 0)) {
 
     <body>
         <?php include 'menu.php'; ?>
+
         <section id="main-content">
             <section class="wrapper">
                 <h3><i class="fa fa-angle-right"></i> จัดการจองตรวจ ATK</h3>
@@ -80,15 +81,16 @@ if (strlen($_SESSION['id'] == 0)) {
                             <table class="table table-striped table-advance table-hover">
                                 <h4><i class="fa fa-angle-right"></i> รายละเอียดการจองทั้งหมด </h4>
                                 <br>
-                                <div class="row no-gutters">
-                                    <div class="col-12 col-sm-6 col-md-8">
-                                        <?php
+                                <?php
                                         if ($search != "") {
                                             echo "กําลังแสดงข้อมูลของรหัสนักศึกษา :" . $search;
                                             $showmsg = "กําลังแสดงข้อมูลของรหัสนักศึกษา :" . $search;
                                         } else {
                                             $showmsg = "";
                                         } ?>
+                                <div class="row no-gutters">
+                                    <div class="col-12 col-sm-6 col-md-8">
+                                        
                                         <form method="get" id="form" enctype="multipart/form-data" action="">
                                             <label for="exampleInputEmail1">ระบบค้นหารอบเปิดจอง จากรหัสนึกศึกษา</label>
                                             <input type="text" class="form-control" id="search" name="search" placeholder="ป้อนรหัสนักศึกษาที่ต้องการค้นหา">
@@ -195,10 +197,16 @@ if (strlen($_SESSION['id'] == 0)) {
                     </thead>
                 <?php } ?>
                 </table>
+               
+                </div>
+                
+                </div>
+                
                 </div>
                 </div>
-                </div>
-
+</section>
+</section>
+</section>
                 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -245,7 +253,6 @@ if (strlen($_SESSION['id'] == 0)) {
                         });
                     }
                 </script>
-
 
 
     </body>

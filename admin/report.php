@@ -64,7 +64,7 @@ if (strlen($_SESSION['id'] == 0)) {
                 <?php
                  $p1 = $row["p1"];
                     $sql1 = "SELECT COUNT(*) AS total1
-                    FROM atk_open
+                    FROM atk_test
                     WHERE date = '$p1'";
                     $resultp1 = mysqli_query($connect, $sql1); 
                     
@@ -77,7 +77,7 @@ if (strlen($_SESSION['id'] == 0)) {
 
                 </td>
                 <td>
-                  <form action="manage-users.php" method="get">
+                  <form action="show_atk_report.php" method="get">
                   <input type="hidden" id="date" name="date" value="<?php echo $p1; ?>">
 
                     <button type="submit" class="btn btn-primary">ดูรายชื่อผู้เข้ารับการตรวจ</button>
@@ -91,7 +91,7 @@ if (strlen($_SESSION['id'] == 0)) {
                 <?php
                  $p2 = $row["p2"];
                     $sql2 = "SELECT COUNT(*) AS total2
-                    FROM atk_open
+                    FROM atk_test
                     WHERE date = '$p2'";
                     $resultp2 = mysqli_query($connect, $sql2); 
                     
@@ -104,7 +104,7 @@ if (strlen($_SESSION['id'] == 0)) {
 
                 </td>
                 <td>
-                  <form action="manage-users.php" method="get">
+                  <form action="show_atk_report.php" method="get">
                   <input type="hidden" id="date" name="date" value="<?php echo $p2; ?>">
 
                     <button type="submit" class="btn btn-primary">ดูรายชื่อผู้เข้ารับการตรวจ</button>
@@ -117,7 +117,7 @@ if (strlen($_SESSION['id'] == 0)) {
                 <?php
                  $p3 = $row["p3"];
                     $sql3 = "SELECT COUNT(*) AS total3
-                    FROM atk_open
+                    FROM atk_test
                     WHERE date = '$p3'";
                     $resultp3 = mysqli_query($connect, $sql3); 
                     
@@ -130,7 +130,7 @@ if (strlen($_SESSION['id'] == 0)) {
 
                 </td>
                 <td>
-                  <form action="manage-users.php" method="get">
+                  <form action="show_atk_report.php" method="get">
                   <input type="hidden" id="date" name="date" value="<?php echo $p3; ?>">
 
                     <button type="submit" class="btn btn-primary">ดูรายชื่อผู้เข้ารับการตรวจ</button>
