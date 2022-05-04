@@ -35,7 +35,7 @@ if (strlen($_SESSION['id'] == 0)) {
                 <?php
                 while ($row = mysqli_fetch_array($result)) { ?>
 
-                    <form action="comple_edit.php" method="POST" enctype="multipart/form-data">
+                    <form action="edit_user_ok.php" method="post" enctype="multipart/form-data">
                         <div class="container mt-3 mb-3" style="background-color: white; border-radius: 20px;
         border: none; padding: 50px; padding-top: 25px;">
                             <center>
@@ -74,7 +74,7 @@ if (strlen($_SESSION['id'] == 0)) {
                                 </div>
                                 <div class="col">
                                     <label class="form-label">รหัสนักศึกษา</label>
-                                    <input type="text" name="stdid" class="form-control" value="<?php echo $row["user_id"]; ?>" style="height: 3em;">
+                                    <input type="text" name="user_id" class="form-control" value="<?php echo $row["user_id"]; ?>" style="height: 3em;">
                                 </div>
                                 <div class="col">
                                     <label class="form-label">เบอร์โทรศัพท์</label>
@@ -94,7 +94,18 @@ if (strlen($_SESSION['id'] == 0)) {
                                         <option value="CoE">CoE</option>
                                     </select>
                                 </div>
+                                <div class="col">
+                                    <label class="form-label">อีเมล์</label>
+                                    <input type="text" name="email" class="form-control" value="<?php echo $row["Email"]; ?>" style="height: 3em;">
+
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">รหัสผ่าน</label>
+                                    <input type="text" name="password" class="form-control" value="<?php echo $row["password"]; ?>" style="height: 3em;">
+
+                                </div>
                             </div>
+                            <input type="hidden" id="oldpic" name="oldpic" value="<?php echo $row["img"]; ?>">
                         <?php } ?>
                         <div class="row mt-3 mb-3">
                             <div class="col">
@@ -108,7 +119,7 @@ if (strlen($_SESSION['id'] == 0)) {
                                 <center>
                                     <br>
                                     <a href="manage-users.php" class="btn btn-info" role="button">กลับหน้าแอดมิน</a>
-                                    <button type="submit" class="btn btn-success">เพิ่มผู้ใช้งาน</button>
+                                    <button type="submit" class="btn btn-success">แก้ไขข้อมูลผู้ใช้งาน</button>
                                 </center>
                             </div>
                         </div>
