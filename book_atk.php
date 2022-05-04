@@ -56,14 +56,14 @@ if (strlen($_SESSION['email'] == null)) {
       var id = event.id;
       $.ajax({
           
-       url:"Book_this.php",
+       url:"dontpostthis.php",
        type:"POST",
        data:{id:id},
        success:function(data)
        {
        },
        error: function () {
-        document.location = "test.php/get="+event.id;
+        document.location = "book_atk_input.php?atopen_id="+event.id;
         }
       })
      }

@@ -72,7 +72,12 @@ if (strlen($_SESSION['email']==null)) {
                         </thead>
                         <tbody>
                             <?php $ret=mysqli_query($connect, "SELECT * from user where Email = '$email'");
-    while ($row=mysqli_fetch_array($ret)) {?>
+    
+    while ($row=mysqli_fetch_array($ret)) {
+        $_SESSION['user_id'] = $row["user_id"];
+        
+        ?>
+    
                             <tr>
                                 <td>คณะ</td>
                                 <td><?php echo $row["faculty"]; ?></td>
