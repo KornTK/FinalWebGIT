@@ -28,6 +28,7 @@ if (strlen($_SESSION['email']==null)) {
 </head>
 
 <body>
+    
 <?php include 'header.php'; ?>   
 
     <div class="container mt-3 mb-3">
