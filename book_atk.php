@@ -19,6 +19,58 @@ if (strlen($_SESSION['email'] == null)) {
     <link href="assets/tem.css" rel="stylesheet">
 
 
+    <link rel="stylesheet" href="./lib/jquery.fancybox.css" type="text/css" media="screen" />
+<!-- fullcalendar -->
+<link href='./fullcalendar/fullcalendar.css' rel='stylesheet' />
+<link href='./fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+<!-- bootstrap -->
+<link href="./lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- jQuery -->
+<script src="./lib/jquery/dist/jquery.min.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src='./lib/moment.min.js'></script>
+<script src='./fullcalendar/fullcalendar.min.js'></script>
+<script src='./lib/lang/th.js'></script>
+<script src="./lib/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+         $(document).ready(function() {
+   var calendar = $('#calendar').fullCalendar({
+    lang: 'th',
+    timezone: 'Asia/Bangkok',
+    editable:true,
+    header:{
+     left:'prev,next today',
+     center:'title',
+     right:'month,agendaWeek,agendaDay'
+    },
+    events: 'dataEvents.php',
+    selectable:true,
+    selectHelper:true,
+    select: function(start, end, allDay)
+    {
+    },
+    eventClick:function(event)
+    {
+     if(confirm("คุณแน่ใช่ว่าต้องการจองวันนี้ใช่ไหม?"))
+     {
+      var id = event.id;
+      $.ajax({
+          
+       url:"Book_this.php",
+       type:"POST",
+       data:{id:id},
+       success:function(data)
+       {
+       },
+       error: function () {
+        document.location = "test.php/get="+event.id;
+        }
+      })
+     }
+    },
+   });
+  });
+    </script>
 </head>
 
 <body>
@@ -26,39 +78,45 @@ if (strlen($_SESSION['email'] == null)) {
 
     <br>
 
-    <div class="atkbook container mt-3 mb-3">
-
-        <center>
-            <h1>จองเวลาตรวจ ATK</h1>
+    <div class="atkbook container mt-3 mb-3" style="width: 100em;">
+    <div id="wrapper">
+        <div class="container" >
+            <center>
+        <h1>จองเวลาตรวจ ATK</h1>
             <p class="booking">ให้ นศ.จองเวลาเข้ารับการตรวจ ATK ในเวลาที่ นศ.สะดวก และจะต้องลงทะเบียนล่วงหน้าเท่านั้น</p>
             <p class="booking">หาก นศ.ยังไม่ลงทะเบียนล่วงหน้าจะต้องเข้ารับการตรวจในช่วงเวลา walk in</p>
+            </center>
+            <div class="row">
 
-            <div class="row mt-3 mb-3">
-                <div class="col-md">
-                    <form action="comple_book.php" method="POST" enctype="multipart/form-data">
-                        <label for="SiSID" class=" form-label">นศ.จะต้องมารับชุดตรวจและเข้ารับการตรวจในช่วงเวลาที่ได้จองไว้เท่านั้น</label><br><br>
-        </center>
-        <input type="radio" id="Count" name="Count" value="1"> 13:30 น. - 14:00 น.<br><br>
-        <input type="radio" id="Count" name="Count" value="2"> 14:00 น. - 14:30 น.<br><br>
-        <input type="radio" id="Count" name="Count" value="3"> 14:30 น. - 15:00 น.<br><br>
-        <input type="radio" id="Count" name="Count" value="4"> 15:00 น. - 15:30 น.<br><br>
-        <input type="radio" id="Count" name="Count" value="5"> 15:30 น. - 16:00 น.<br><br>
-        <input type="radio" id="Count" name="Count" value="6"> Walk in (หลัง 16:00 น.)<br><br>
-        <input type="radio" id="Count" name="Count" value="7"> ส่งเอกสาร/หลักฐานแสดงผลการตรวจว่าไม่พบเชื้อ ภายในระยะเวลา 72 ชม.ต่อเจ้าหน้าที่<br><br>
-        <input type="radio" id="Count" name="Count" value="8"> หายจากการป่วยเป็นโรคโควิด-19 ไม่เกิน 90 วัน<br><br>
-        <center>
+                <div class='col-md-12'>
+                    <div class="panel panel-default">
+                        <div class="panel-heading bg-dark">
+                            ปฏิทินเลือกวันจอง
+                        </div>
+                        <div class="panel-body">
+
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div id='calendar'></div>
+                                    <div style="margin:10px 0 50px 0;" align="center">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      
+            
+    </div>
+    </div>
+    <center>
             <br>
             <a href="show_infor.php" class="btn btn-info" role="button">กลับหน้าโปรไฟล์</a>
-            <button type="submit" class="btn btn-success">จอง</button>
         </center>
-
     </div>
-    </form>
-
-    </div>
-
-    </div>
-
 
     <script src="js/bootstrap.min.js"></script>
 </body>

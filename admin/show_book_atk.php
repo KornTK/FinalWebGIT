@@ -179,7 +179,7 @@ if (strlen($_SESSION['id'] == 0)) {
                                 <td><?php echo $row["time"]; ?></td>
                                 <td><?php echo $row["atopen_id"]; ?></td>
                                 <td>
-                                    <form action="edit_atk_roud.php" method="post">
+                                    <form action="edit_book_atk.php" method="post">
                                         <input type="hidden" id="Book_ID" name="Book_ID" value="<?php echo $row["Book_ID"]; ?>">
                                         <button type="submit" class="btn btn-info"> แก้ไข <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                     </form>
